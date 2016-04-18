@@ -1,3 +1,30 @@
+# Notizen zu Hackathon
+
+* Digitales Unfallprotokoll
+* Einfache Bedienung und grosse Übersicht (nach Unfall ist man verwirrt und nervös)
+* Fotos werden direkt aus der Applikation heraus mit der Handykamera erstellt
+* Universell und nicht Versicherungsspezifisch
+* Am Schluss signieren wie bei der Papierform beide Parteien das Protokoll
+* App schick ausgefüllte Daten an Server
+* Server stellt Daten via Rest-Resource zur verfügung
+* Hat der Kunde die Aufnahme eines Schadens abgeschlossen (mit Unterschriften beider Parteien) kann er via eine Funktion ein Mail mit den Daten an sein GA der Mobi auslösen
+* Versicherungen könnnen via REST-Call und einer ID die Daten des Unfalls beziehen und in ihre Applikationen einbauen
+* Daten auch als PDF exportierbar
+
+## Folgende Vorteile bietet die App gegenüber der Papierform
+* Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
+* Handy hat man immer bei sich -> Protokoll evtl nicht
+* Schnelleres Aufnehmen eines Schadens (Persönliche Daten wie Adresse,Fahrzeug,Versicherung können hinterlegt werden -> Digital Wallet mit Fahrzeugpapieren?)
+* Mail an Bezugsperson bei der Versicherung (Mehrmaliges umkopieren/abtippen der gleichen Daten fällt weg)
+* Daten zur Auswertung für Unfallstatistiken
+
+
+
+
+
+
+# Notizen zu StarterKit
+
 # Release Notes
 
 ### 2015-10-15
