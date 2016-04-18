@@ -47,5 +47,18 @@
         android:visibility="gone"
         style="@style/BootstrapButton"
         />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
+        style="@style/TimerChronometer"
+        />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        style="@style/BootstrapButton"
+        />
 
 </LinearLayout>

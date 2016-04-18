@@ -115,6 +115,12 @@ dependencies {
     // Dependency Injection
     compile 'com.google.dagger:dagger:2.0'
 
+    // Volley for HTTP Requests
+    compile 'com.android.volley:volley:1.0.0'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
+
 
     // View Injection
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -136,7 +142,7 @@ dependencies {
 
 
     // Fabric/Crashlytics
-    compile('com.crashlytics.sdk.android:crashlytics:2.2.3@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }
 

@@ -20,6 +20,13 @@ import org.mobi.bluemoon.core.TimerPausedEvent;
 import org.mobi.bluemoon.core.TimerService;
 import org.mobi.bluemoon.core.TimerTickEvent;
 import org.mobi.bluemoon.util.TimeUtil;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -32,13 +39,24 @@ import static android.view.View.VISIBLE;
 
 public class BootstrapTimerActivity extends BootstrapFragmentActivity implements View.OnClickListener {
 
-    @Inject Bus eventBus;
+    @Inject
+    Bus eventBus;
 
-    @Bind(R.id.chronometer) protected TextView chronometer;
-    @Bind(R.id.start) protected Button start;
-    @Bind(R.id.stop) protected Button stop;
-    @Bind(R.id.pause) protected Button pause;
-    @Bind(R.id.resume) protected Button resume;
+    @Bind(R.id.chronometer)
+    protected TextView chronometer;
+    @Bind(R.id.start)
+    protected Button start;
+    @Bind(R.id.stop)
+    protected Button stop;
+    @Bind(R.id.pause)
+    protected Button pause;
+    @Bind(R.id.resume)
+    protected Button resume;
+    @Bind(R.id.submit)
+    protected Button submit;
+    @Bind(R.id.textView)
+    protected TextView textView;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -57,6 +75,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
         stop.setOnClickListener(this);
         pause.setOnClickListener(this);
         resume.setOnClickListener(this);
+        submit.setOnClickListener(this);
 
     }
 
@@ -75,7 +94,36 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
             case R.id.resume:
                 produceResumeEvent();
                 break;
+            case R.id.submit:
+                sendHttpRequest();
+                break;
         }
+    }
+
+    private void sendHttpRequest() {
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://www.google.com";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        textView.setText("Response is: " + response.substring(0, 500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                textView.setText("That didn't work!");
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+
     }
 
     @Override
@@ -94,7 +142,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
                     TaskStackBuilder.create(this)
                             // Add all of this activity's parents to the back stack
                             .addNextIntentWithParentStack(upIntent)
-                                    // Navigate up to the closest parent
+                            // Navigate up to the closest parent
                             .startActivities();
                 } else {
                     // This activity is part of this app's task, so simply
@@ -102,7 +150,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
                     NavUtils.navigateUpTo(this, upIntent);
                 }
                 return true;
-                default:
+            default:
                 return super.onOptionsItemSelected(item);
         }
     }
