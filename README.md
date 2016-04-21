@@ -19,8 +19,10 @@
 * Daten zur Auswertung für Unfallstatistiken
 
 
-
-
+## Fantastic UI libs
+* https://design.google.com/icons/#ic_assignment_ind
+* https://github.com/wasabeef/awesome-android-ui
+* https://github.com/tekinarslan/AndroidMaterialDesignToolbar
 
 
 # Notizen zu StarterKit
