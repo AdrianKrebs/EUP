@@ -140,6 +140,9 @@ dependencies {
     // HTTP
     compile 'com.squareup.retrofit:retrofit:1.5.1'
 
+    // UI Libraries
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+
 
     // Fabric/Crashlytics
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {

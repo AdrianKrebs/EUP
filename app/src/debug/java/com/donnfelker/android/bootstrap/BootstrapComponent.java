@@ -6,6 +6,7 @@ import org.mobi.bluemoon.ui.BootstrapActivity;
 import org.mobi.bluemoon.ui.BootstrapFragmentActivity;
 import org.mobi.bluemoon.ui.BootstrapTimerActivity;
 import org.mobi.bluemoon.ui.CheckInsListFragment;
+import org.mobi.bluemoon.ui.DetailsFragment;
 import org.mobi.bluemoon.ui.MainActivity;
 import org.mobi.bluemoon.ui.NavigationDrawerFragment;
 import org.mobi.bluemoon.ui.NewsActivity;
@@ -35,6 +36,8 @@ public interface BootstrapComponent {
     void inject(MainActivity target);
 
     void inject(CheckInsListFragment target);
+
+    void inject(DetailsFragment target);
 
     void inject(NavigationDrawerFragment target);
 

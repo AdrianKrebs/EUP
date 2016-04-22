@@ -32,7 +32,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -47,6 +47,9 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
                 break;
             case 2:
                 result = new CheckInsListFragment();
+                break;
+            case 3:
+                result = new DetailsFragment();
                 break;
             default:
                 result = null;
@@ -67,6 +70,8 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
                 return resources.getString(R.string.page_users);
             case 2:
                 return resources.getString(R.string.page_checkins);
+            case 3:
+                return resources.getString(R.string.Details);
             default:
                 return null;
         }

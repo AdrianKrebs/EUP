@@ -12,7 +12,6 @@ import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 
 import org.mobi.bluemoon.BootstrapApplication;
-import org.mobi.bluemoon.DaggerBootstrapComponent;
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.ui.BootstrapTimerActivity;
 import org.mobi.bluemoon.util.Strings;

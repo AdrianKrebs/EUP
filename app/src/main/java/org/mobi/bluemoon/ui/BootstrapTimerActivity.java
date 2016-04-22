@@ -8,7 +8,9 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.mobi.bluemoon.BootstrapApplication;
@@ -52,10 +54,12 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
     protected Button pause;
     @Bind(R.id.resume)
     protected Button resume;
-    @Bind(R.id.submit)
+    @Bind(R.id.sendGetRequest)
     protected Button submit;
     @Bind(R.id.textView)
     protected TextView textView;
+    @Bind(R.id.spinner_condition)
+    protected Spinner testSpinner;
 
 
     @Override
@@ -77,6 +81,15 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
         resume.setOnClickListener(this);
         submit.setOnClickListener(this);
 
+
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter_condition = ArrayAdapter.createFromResource(this,
+                R.array.location_array, android.R.layout.simple_spinner_item);
+
+        adapter_condition.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+// Apply the adapter to the spinner
+        testSpinner.setAdapter(adapter_condition);
     }
 
     @Override
@@ -94,7 +107,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
             case R.id.resume:
                 produceResumeEvent();
                 break;
-            case R.id.submit:
+            case R.id.sendGetRequest:
                 sendHttpRequest();
                 break;
         }
