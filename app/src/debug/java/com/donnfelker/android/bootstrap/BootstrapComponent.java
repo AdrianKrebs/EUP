@@ -11,6 +11,7 @@ import org.mobi.bluemoon.ui.MainActivity;
 import org.mobi.bluemoon.ui.NavigationDrawerFragment;
 import org.mobi.bluemoon.ui.NewsActivity;
 import org.mobi.bluemoon.ui.NewsListFragment;
+import org.mobi.bluemoon.ui.OverviewFragment;
 import org.mobi.bluemoon.ui.UserActivity;
 import org.mobi.bluemoon.ui.UserListFragment;
 
@@ -38,6 +39,8 @@ public interface BootstrapComponent {
     void inject(CheckInsListFragment target);
 
     void inject(DetailsFragment target);
+
+    void inject(OverviewFragment target);
 
     void inject(NavigationDrawerFragment target);
 
