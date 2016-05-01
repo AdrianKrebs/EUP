@@ -10,6 +10,7 @@
 * Hat der Kunde die Aufnahme eines Schadens abgeschlossen (mit Unterschriften beider Parteien) kann er via eine Funktion ein Mail mit den Daten an sein GA der Mobi auslösen
 * Versicherungen könnnen via REST-Call und einer ID die Daten des Unfalls beziehen und in ihre Applikationen einbauen
 * Daten auch als PDF exportierbar
+* Mobiliar-Like Skizze -> manuelles Zeichnen
 
 ## Folgende Vorteile bietet die App gegenüber der Papierform
 * Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
