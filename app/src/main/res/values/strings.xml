@@ -47,11 +47,12 @@
     <string name="hint_nachname">Nachname</string>
     <string name="hint_vorname">Vorname</string>
     <string name="hint_anschrift">Anschrift</string>
-    <string name="Details">Details</string>
+    <string name="page_details">Details</string>
     <string name="verletzte_einschliesslich_leichtverletzte">Verletzte, einschliesslich Leichtverletzte</string>
     <string name="ja">ja</string>
     <string name="nein">nein</string>
-    <string name="Home">Home</string>
+    <string name="page_home">Home</string>
+    <string name="page_sketch">Sketch</string>
 
 
 </resources>

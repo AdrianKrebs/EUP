@@ -3,4 +3,6 @@
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
      https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="shape_size">150dp</dimen>
+    <dimen name="elevation_step">150dp</dimen>
 </resources>
