@@ -11,6 +11,8 @@
 * Versicherungen könnnen via REST-Call und einer ID die Daten des Unfalls beziehen und in ihre Applikationen einbauen
 * Daten auch als PDF exportierbar
 * Mobiliar-Like Skizze -> manuelles Zeichnen
+* Wenn beide Unfall-Parteien das App besitzen können Daten direkt übertragen werden
+* Digital-Wallet mit gescannten Fahrzeupapieren
 
 ## Folgende Vorteile bietet die App gegenüber der Papierform
 * Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
