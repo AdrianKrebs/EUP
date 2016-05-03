@@ -53,6 +53,7 @@
     <string name="nein">nein</string>
     <string name="page_home">Home</string>
     <string name="page_sketch">Sketch</string>
+    <string name="page_signature">Signature</string>
 
 
 </resources>

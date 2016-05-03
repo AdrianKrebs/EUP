@@ -90,6 +90,8 @@ public class DragFrameLayout extends FrameLayout {
             public void onViewCaptured(View capturedChild, int activePointerId) {
                 super.onViewCaptured(capturedChild, activePointerId);
                 if (mDragFrameLayoutController != null) {
+
+                    //TODO add selection code here capturedChild.background or sth
                     mDragFrameLayoutController.onDragDrop(true);
                 }
             }
