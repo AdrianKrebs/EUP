@@ -13,6 +13,7 @@
 * Mobiliar-Like Skizze -> manuelles Zeichnen
 * Wenn beide Unfall-Parteien das App besitzen können Daten direkt übertragen werden
 * Digital-Wallet mit gescannten Fahrzeupapieren
+* Wenn Gegenpartei das App ebenfalls besitzt könnten die Daten (Bluetooth, Server,..) ausgetauscht werden, was nochmal zu einer drastischen Beschleundigung des Prozesses führen würde
 
 ## Folgende Vorteile bietet die App gegenüber der Papierform
 * Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
