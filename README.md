@@ -21,7 +21,7 @@ Prioritäten 1-3 (1 = must have, 4 future)
 
 ## Folgende Vorteile bietet die App gegenüber der Papierform
 * Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
-* Handy hat man immer bei sich -> Protokoll evtl nicht
+* Handy hat man immer bei sich -> Protokoll evtl nicht, Anerkennungsprozess
 * Schnelleres Aufnehmen eines Schadens (Persönliche Daten wie Adresse,Fahrzeug,Versicherung können hinterlegt werden -> Digital Wallet mit Fahrzeugpapieren?)
 * Mail an Bezugsperson bei der Versicherung (Mehrmaliges umkopieren/abtippen der gleichen Daten fällt weg)
 * Daten zur Auswertung für Unfallstatistiken
