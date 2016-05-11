@@ -61,5 +61,7 @@
     <string name="settings">Settings</string>
     <string name="email">Email</string>
     <string name="page_date">Datum</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="location">Ort</string>
 
 </resources>

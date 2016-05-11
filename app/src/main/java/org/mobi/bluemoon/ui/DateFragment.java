@@ -76,6 +76,8 @@ public class DateFragment extends Fragment {
 
             }
         });
+
+
         return view;
     }
 

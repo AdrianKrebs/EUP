@@ -32,7 +32,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 9;
+        return 10;
     }
 
     @Override
@@ -61,9 +61,12 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
                 result = new DateFragment();
                 break;
             case 7:
-                result = new DrawingFragment();
+                result = new MapFragment();
                 break;
             case 8:
+                result = new DrawingFragment();
+                break;
+            case 9:
                 result = new SignatureFragment();
                 break;
             default:
@@ -94,8 +97,10 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             case 6:
                 return resources.getString(R.string.page_date);
             case 7:
-                return resources.getString(R.string.page_drawing);
+                return resources.getString(R.string.location);
             case 8:
+                return resources.getString(R.string.page_drawing);
+            case 9:
                 return resources.getString(R.string.page_signature);
 
             default:

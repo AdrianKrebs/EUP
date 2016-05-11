@@ -7,16 +7,18 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="5dp">
+
     <TextView
         android:id="@+id/daten_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Datum des Unfalls"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/table_text_selector"
-        android:background="#56d3f6"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        android:background="#56d3f6"
+        android:text="Wann ist der Unfall passiert?"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/table_text_selector" />
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -32,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:hint="Datum" />
+
         <EditText
             android:id="@+id/accidentTime"
             android:layout_width="0dp"
@@ -41,4 +44,5 @@
 
 
     </LinearLayout>
+
 </LinearLayout>
