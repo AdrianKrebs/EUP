@@ -1,22 +1,27 @@
 # Notizen zu Hackathon
 
+Prioritäten 1-3 (1 = must have, 4 future)
+
 * Digitales Unfallprotokoll
-* Einfache Bedienung und grosse Übersicht (nach Unfall ist man verwirrt und nervös)
-* Fotos werden direkt aus der Applikation heraus mit der Handykamera erstellt
-* Universell und nicht Versicherungsspezifisch
-* Am Schluss signieren wie bei der Papierform beide Parteien das Protokoll
-* App schick ausgefüllte Daten an Server
-* Server stellt Daten via Rest-Resource zur verfügung
-* Hat der Kunde die Aufnahme eines Schadens abgeschlossen (mit Unterschriften beider Parteien) kann er via eine Funktion ein Mail mit den Daten an sein GA der Mobi auslösen
-* Versicherungen könnnen via REST-Call und einer ID die Daten des Unfalls beziehen und in ihre Applikationen einbauen
-* Daten auch als PDF exportierbar
-* Mobiliar-Like Skizze -> manuelles Zeichnen
-* Wenn beide Unfall-Parteien das App besitzen können Daten direkt übertragen werden
-* Digital-Wallet mit gescannten Fahrzeupapieren
+* 1 Einfache Bedienung und grosse Übersicht (nach Unfall ist man verwirrt und nervös) -> usability
+* 1 Fotos werden direkt aus der Applikation heraus mit der Handykamera erstellt
+* 3 Universell und nicht Versicherungsspezifisch
+* 1 Am Schluss signieren wie bei der Papierform beide Parteien das Protokoll
+* 1 (3 mit Bilder) App schick ausgefüllte Daten an Server
+* 2 Versicherungen könnnen via REST-Call und einer ID die Daten des Unfalls beziehen und in ihre Applikationen einbauen
+* 1 Hat der Kunde die Aufnahme eines Schadens abgeschlossen (mit Unterschriften beider Parteien) kann er via eine Funktion ein Mail mit den Daten an seine GA der Mobi auslösen http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
+* 1 Daten auch als PDF exportierbar
+* 2 Mobiliar-Like Skizze -> manuelles Zeichnen
+* 3 Digital-Wallet mit gescannten Fahrzeupapieren (nur mir Icon andeuten)
+* 2 Wenn Gegenpartei das App ebenfalls besitzt könnten die Daten (Bluetooth, Server,..) ausgetauscht werden, was nochmal zu einer drastischen Beschleundigung des Prozesses führen würde (ohne Vertragsdaten, Wiederverwendung von Daten, keine Redundanz)
+* 2 Zeugenadressen können erfasst werden
+* 2 Polizeirapport anhängen
+* 3 Location-API (z.b. Foursquare) ermöglicht finden von Garage in der Nähe
+* 4 Mobi-App Anbindung (Möglichkeiten aufzeigen)
 
 ## Folgende Vorteile bietet die App gegenüber der Papierform
 * Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
-* Handy hat man immer bei sich -> Protokoll evtl nicht
+* Handy hat man immer bei sich -> Protokoll evtl nicht, Anerkennungsprozess
 * Schnelleres Aufnehmen eines Schadens (Persönliche Daten wie Adresse,Fahrzeug,Versicherung können hinterlegt werden -> Digital Wallet mit Fahrzeugpapieren?)
 * Mail an Bezugsperson bei der Versicherung (Mehrmaliges umkopieren/abtippen der gleichen Daten fällt weg)
 * Daten zur Auswertung für Unfallstatistiken
