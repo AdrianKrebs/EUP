@@ -195,7 +195,7 @@
             android:id="@+id/versicherungsnummer_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="Versicherungsnummer"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_selector" />
 
