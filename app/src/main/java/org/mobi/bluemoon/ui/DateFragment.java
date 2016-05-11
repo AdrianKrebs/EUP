@@ -1,14 +1,17 @@
 package org.mobi.bluemoon.ui;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import org.mobi.bluemoon.R;
 
@@ -19,7 +22,7 @@ import java.util.Locale;
 public class DateFragment extends Fragment {
 
     private EditText dateText;
-    private SimpleDateFormat dateFormatter;
+    private EditText timeText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,15 @@ public class DateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = View.inflate(getActivity(), R.layout.date_page, null);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         dateText = (EditText) view.findViewById(R.id.accidentDate);
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.requestFocus();
+
+        timeText = (EditText) view.findViewById(R.id.accidentTime);
+        timeText.setInputType(InputType.TYPE_NULL);
+        timeText.requestFocus();
+
 
         view.findViewById(R.id.accidentDate).setOnClickListener(new View.OnClickListener() {
 
@@ -49,6 +56,26 @@ public class DateFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.accidentTime).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        timeText.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
         return view;
     }
 
