@@ -54,6 +54,11 @@
     <string name="page_home">Home</string>
     <string name="page_sketch">Sketch</string>
     <string name="page_signature">Signature</string>
-
+    <string name="agreement">I agree the terms and conditions.</string>
+    <string name="clear_pad">Clear Pad</string>
+    <string name="save_signature">Save Signature</string>
+    <string name="page_drawing">Drawing</string>
+    <string name="settings">Settings</string>
+    <string name="email">Email</string>
 
 </resources>

@@ -1,6 +1,7 @@
 
 package org.mobi.bluemoon.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.RestAdapter;
@@ -48,14 +49,14 @@ public class BootstrapService {
      * Get all bootstrap News that exists on Parse.com
      */
     public List<News> getNews() {
-        return getNewsService().getNews().getResults();
+        return new ArrayList<>();
     }
 
     /**
      * Get all bootstrap Users that exist on Parse.com
      */
     public List<User> getUsers() {
-        return getUserService().getUsers().getResults();
+        return new ArrayList<>();
     }
 
     /**

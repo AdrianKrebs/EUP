@@ -5,8 +5,6 @@ package org.mobi.bluemoon;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 
 /**
  * bluemoon application
@@ -14,7 +12,7 @@ import io.fabric.sdk.android.Fabric;
 public abstract class BootstrapApplication extends Application {
 
     private static BootstrapApplication instance;
-    private BootstrapComponent component;
+    private org.mobi.bluemoon.BootstrapComponent component;
 
     /**
      * Create main application
@@ -37,7 +35,7 @@ public abstract class BootstrapApplication extends Application {
 
         onAfterInjection();
     }
-    public static BootstrapComponent component() {
+    public static org.mobi.bluemoon.BootstrapComponent component() {
         return instance.component;
     }
 
@@ -49,13 +47,13 @@ public abstract class BootstrapApplication extends Application {
         return instance;
     }
 
-    public BootstrapComponent getComponent() {
+    public org.mobi.bluemoon.BootstrapComponent getComponent() {
         return component;
     }
 
     public final static class DaggerComponentInitializer {
 
-        public static BootstrapComponent init() {
+        public static org.mobi.bluemoon.BootstrapComponent init() {
             return DaggerBootstrapComponent.builder()
                     .androidModule(new AndroidModule())
                     .bootstrapModule(new BootstrapModule())

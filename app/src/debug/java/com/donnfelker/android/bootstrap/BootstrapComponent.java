@@ -1,5 +1,7 @@
 package org.mobi.bluemoon;
 
+import android.provider.ContactsContract;
+
 import org.mobi.bluemoon.authenticator.BootstrapAuthenticatorActivity;
 import org.mobi.bluemoon.core.TimerService;
 import org.mobi.bluemoon.ui.BootstrapActivity;
@@ -12,6 +14,7 @@ import org.mobi.bluemoon.ui.NavigationDrawerFragment;
 import org.mobi.bluemoon.ui.NewsActivity;
 import org.mobi.bluemoon.ui.NewsListFragment;
 import org.mobi.bluemoon.ui.OverviewFragment;
+import org.mobi.bluemoon.ui.ProfileActivity;
 import org.mobi.bluemoon.ui.UserActivity;
 import org.mobi.bluemoon.ui.UserListFragment;
 
@@ -51,6 +54,8 @@ public interface BootstrapComponent {
     void inject(UserActivity target);
 
     void inject(UserListFragment target);
+
+    void inject(ProfileActivity target);
 
     void inject(TimerService target);
 

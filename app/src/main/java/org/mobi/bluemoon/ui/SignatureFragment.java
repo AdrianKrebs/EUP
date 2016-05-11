@@ -1,34 +1,45 @@
 package org.mobi.bluemoon.ui;
 
-import android.annotation.TargetApi;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
-import me.panavtec.drawableview.*;
-
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.Toast;
 
+import com.github.gcacace.signaturepad.views.SignaturePad;
+
+import org.mobi.bluemoon.BootstrapApplication;
 import org.mobi.bluemoon.R;
 
-import java.util.Random;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
+import butterknife.Bind;
 
 public class SignatureFragment extends Fragment {
 
-    DrawableView drawableView;
-    DrawableViewConfig config;
 
+    private SignaturePad mSignaturePad;
+    private Button mClearButton;
+    private Button mSaveButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        // TODO: Put signature and sketch in separeted activity
-        // TODO: rotate second car
 
 
     }
@@ -39,53 +50,114 @@ public class SignatureFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.signature, container, false);
 
+        mSignaturePad = (SignaturePad) view.findViewById(R.id.signature_pad);
+        mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
+            @Override
+            public void onStartSigning() {
+                Toast.makeText(getActivity(), "OnStartSigning", Toast.LENGTH_SHORT).show();
+            }
 
-        drawableView = (DrawableView) view.findViewById(R.id.paintView);
+            @Override
+            public void onSigned() {
+                mSaveButton.setEnabled(true);
+                mClearButton.setEnabled(true);
+            }
 
-        Button strokeWidthMinusButton = (Button) view.findViewById(R.id.strokeWidthMinusButton);
-        Button strokeWidthPlusButton = (Button) view.findViewById(R.id.strokeWidthPlusButton);
-        Button changeColorButton = (Button) view.findViewById(R.id.changeColorButton);
-        Button undoButton = (Button) view.findViewById(R.id.undoButton);
-
-
-        config = new DrawableViewConfig();
-        config.setStrokeColor(getResources().getColor(android.R.color.black));
-        config.setShowCanvasBounds(true); // If the view is bigger than canvas, with this the user will see the bounds (Recommended)
-        config.setStrokeWidth(20.0f);
-        config.setMinZoom(1.0f);
-        config.setMaxZoom(3.0f);
-        config.setCanvasHeight(1080);
-        config.setCanvasWidth(1920);
-        drawableView.setConfig(config);
-        strokeWidthPlusButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override public void onClick(View v) {
-                config.setStrokeWidth(config.getStrokeWidth() + 10);
+            @Override
+            public void onClear() {
+                mSaveButton.setEnabled(false);
+                mClearButton.setEnabled(false);
             }
         });
-        strokeWidthMinusButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override public void onClick(View v) {
-                config.setStrokeWidth(config.getStrokeWidth() - 10);
+        mClearButton = (Button) view.findViewById(R.id.clear_button);
+        mSaveButton = (Button) view.findViewById(R.id.save_button);
+
+        mClearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSignaturePad.clear();
             }
         });
-        changeColorButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override public void onClick(View v) {
-                Random random = new Random();
-                config.setStrokeColor(
-                        Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256)));
-            }
-        });
-        undoButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override public void onClick(View v) {
-                drawableView.undo();
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap signatureBitmap = mSignaturePad.getSignatureBitmap();
+                if (addJpgSignatureToGallery(signatureBitmap)) {
+                    Toast.makeText(getActivity(), "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Unable to store the signature", Toast.LENGTH_SHORT).show();
+                }
+                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {
+                    Toast.makeText(getActivity(), "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
 
         return view;
+    }
+
+
+    public File getAlbumStorageDir(String albumName) {
+        // Get the directory for the user's public pictures directory.
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), albumName);
+        if (!file.mkdirs()) {
+            Log.e("SignaturePad", "Directory not created");
+        }
+        return file;
+    }
+
+    public void saveBitmapToJPG(Bitmap bitmap, File photo) throws IOException {
+        Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(newBitmap);
+        canvas.drawColor(Color.WHITE);
+        canvas.drawBitmap(bitmap, 0, 0, null);
+        OutputStream stream = new FileOutputStream(photo);
+        newBitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream);
+        stream.close();
+    }
+
+    public boolean addJpgSignatureToGallery(Bitmap signature) {
+        boolean result = false;
+        try {
+            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%d.jpg", System.currentTimeMillis()));
+            saveBitmapToJPG(signature, photo);
+            scanMediaFile(photo);
+            result = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private void scanMediaFile(File photo) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri contentUri = Uri.fromFile(photo);
+        mediaScanIntent.setData(contentUri);
+        getActivity().sendBroadcast(mediaScanIntent);
+    }
+
+    public boolean addSvgSignatureToGallery(String signatureSvg) {
+        boolean result = false;
+        try {
+            File svgFile = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%d.svg", System.currentTimeMillis()));
+            OutputStream stream = new FileOutputStream(svgFile);
+            OutputStreamWriter writer = new OutputStreamWriter(stream);
+            writer.write(signatureSvg);
+            writer.close();
+            stream.flush();
+            stream.close();
+            scanMediaFile(svgFile);
+            result = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 

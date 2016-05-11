@@ -52,14 +52,6 @@ public class UserListAdapter extends SingleTypeAdapter<User> {
 
     @Override
     protected void update(final int position, final User user) {
-
-        Picasso.with(BootstrapApplication.getInstance())
-                .load(user.getAvatarUrl())
-                .placeholder(R.drawable.gravatar_icon)
-                .into(imageView(0));
-
-        setText(1, String.format("%1$s %2$s", user.getFirstName(), user.getLastName()));
-
     }
 
 }

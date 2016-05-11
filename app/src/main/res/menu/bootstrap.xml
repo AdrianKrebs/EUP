@@ -14,7 +14,7 @@
         android:id="@+id/timer"
         android:icon="@drawable/ic_action_timer"
         android:showAsAction="always"
-        android:title="@string/title_timer">
+        android:title="@string/settings">
     </item>
 
     <item

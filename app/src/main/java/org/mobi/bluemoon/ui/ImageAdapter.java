@@ -1,56 +1,62 @@
 package org.mobi.bluemoon.ui;
 
+import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.mobi.bluemoon.R;
 
-/**
- * Created by Adrian on 4/23/2016.
- */
-public class ImageAdapter extends BaseAdapter {
-    private Context mContext;
+import java.util.ArrayList;
 
-    public ImageAdapter(Context c) {
-        mContext = c;
+public class ImageAdapter extends ArrayAdapter<Item> {
+    Context context;
+    int layoutResourceId;
+    ArrayList<Item> data = new ArrayList<Item>();
+
+    public ImageAdapter(Context context, int layoutResourceId,
+                                 ArrayList<Item> data) {
+        super(context, layoutResourceId, data);
+        this.layoutResourceId = layoutResourceId;
+        this.context = context;
+        this.data = data;
     }
 
-    public int getCount() {
-        return mThumbIds.length;
-    }
-
-    public Object getItem(int position) {
-        return null;
-    }
-
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    // create a new ImageView for each item referenced by the Adapter
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) {
-            // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(12, 12, 12, 12);
+        View row = convertView;
+        RecordHolder holder = null;
+
+        if (row == null) {
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+            row = inflater.inflate(layoutResourceId, parent, false);
+
+            holder = new RecordHolder();
+            holder.txtTitle = (TextView) row.findViewById(R.id.item_text);
+            holder.imageItem = (ImageView) row.findViewById(R.id.item_image);
+            row.setTag(holder);
         } else {
-            imageView = (ImageView) convertView;
+            holder = (RecordHolder) row.getTag();
         }
 
-        imageView.setImageResource(mThumbIds[position]);
-        return imageView;
+        Item item = data.get(position);
+        holder.txtTitle.setText(item.getTitle());
+        holder.imageItem.setImageBitmap(item.getImage());
+        return row;
+
     }
 
-    // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.ic_description_black_48dp, R.drawable.ic_directions_car_black_48dp,
-            R.drawable.ic_contacts_black_48dp, R.drawable.ic_add_a_photo_black_48dp
-    };
+    static class RecordHolder {
+        TextView txtTitle;
+        ImageView imageItem;
+
+    }
 }
