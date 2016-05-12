@@ -39,6 +39,7 @@ public class ElevationDragFragment extends Fragment {
     protected ImageButton rotation_button;
 
     int numClicks = 1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,24 +48,24 @@ public class ElevationDragFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sketch, container, false);
 
         /* Find the {@link View} to apply z-translation to. */
         final View floatingShape = rootView.findViewById(R.id.circle);
         final View car2 = rootView.findViewById(R.id.car2);
 
-        DragFrameLayout dragLayout = ((DragFrameLayout) rootView.findViewById(R.id.main_layout));
+        final DragFrameLayout dragLayout = ((DragFrameLayout) rootView.findViewById(R.id.main_layout));
 
         rotation_button = (ImageButton) rootView.findViewById(R.id.rotation_button);
         rotation_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    floatingShape.setPivotX(floatingShape.getWidth()/2);
-                    floatingShape.setPivotY(floatingShape.getHeight() / 2);
-                    floatingShape.setRotation(30*numClicks);
-                    numClicks++;
-                }
+                dragLayout.getSelectedView().setPivotX(dragLayout.getSelectedView().getWidth() / 2);
+                dragLayout.getSelectedView().setPivotY(dragLayout.getSelectedView().getHeight() / 2);
+                dragLayout.getSelectedView().setRotation(30 * numClicks);
+                numClicks++;
+            }
         });
         dragLayout.setDragFrameController(new DragFrameLayout.DragFrameLayoutController() {
 

@@ -38,6 +38,8 @@ public class DragFrameLayout extends FrameLayout {
      */
     private List<View> mDragViews;
 
+    private View selectedView;
+
     /**
      * The {@link DragFrameLayoutController} that will be notify on drag.
      */
@@ -68,6 +70,8 @@ public class DragFrameLayout extends FrameLayout {
         mDragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelper.Callback() {
             @Override
             public boolean tryCaptureView(View child, int pointerId) {
+
+                selectedView = child;
                 return mDragViews.contains(child);
             }
 
@@ -144,5 +148,9 @@ public class DragFrameLayout extends FrameLayout {
     public interface DragFrameLayoutController {
 
         public void onDragDrop(boolean captured);
+    }
+
+    public View getSelectedView() {
+        return selectedView;
     }
 }
