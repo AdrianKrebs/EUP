@@ -2,7 +2,6 @@ package org.mobi.bluemoon.ui;
 
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.activeandroid.query.Select;
 
@@ -10,8 +9,6 @@ import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.db.Fahrer;
 
 import butterknife.Bind;
-
-import static org.mobi.bluemoon.core.Constants.Extra.NEWS_ITEM;
 
 public class ProfileActivity extends BootstrapActivity {
 
@@ -24,6 +21,8 @@ public class ProfileActivity extends BootstrapActivity {
     protected EditText email;
     @Bind(R.id.marke)
     protected EditText marke;
+
+    Fahrer fahrerA;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -47,35 +46,38 @@ public class ProfileActivity extends BootstrapActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Fahrer fahrerA = new Fahrer();
-        fahrerA.setName(name.getText().toString());
-        fahrerA.setStrasse(adresse.getText().toString());
-        fahrerA.setKlasse(marke.getText().toString());
-        fahrerA.setEmail(email.getText().toString());
-        fahrerA.save();
+        saveFahrer();
+    }
+
+    private void loadFahrer() {
+        fahrerA = new Select().from(Fahrer.class).orderBy("id DESC").executeSingle();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Fahrer fahrerA = new Select().from(Fahrer.class).orderBy("RANDOM()").executeSingle();
+        loadFahrer();
         if (fahrerA != null) {
             name.setText(fahrerA.getName());
             adresse.setText(fahrerA.getStrasse());
             email.setText(fahrerA.getEmail());
             marke.setText(fahrerA.getKlasse());
         }
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Fahrer fahrerA = new Fahrer();
+        saveFahrer();
+    }
+
+    private void saveFahrer() {
+        fahrerA = new Fahrer();
         fahrerA.setName(name.getText().toString());
         fahrerA.setStrasse(adresse.getText().toString());
         fahrerA.setKlasse(marke.getText().toString());
         fahrerA.setEmail(email.getText().toString());
         fahrerA.save();
     }
+
 }
