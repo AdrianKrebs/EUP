@@ -26,7 +26,6 @@ public abstract class BootstrapApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ActiveAndroid.initialize(this);
 
         init();
 

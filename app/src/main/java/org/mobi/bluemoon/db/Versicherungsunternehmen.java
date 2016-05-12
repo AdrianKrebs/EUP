@@ -7,8 +7,8 @@ import com.activeandroid.annotation.Table;
 /**
  * Created by Client on 12.05.2016.
  */
-@Table(name = "Verischerungsunternehmen")
-public class Verischerungsunternehmen extends Model{
+@Table(name = "Versicherungsunternehmen")
+public class Versicherungsunternehmen extends Model{
     @Column
     private String name;
     @Column

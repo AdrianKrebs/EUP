@@ -6,6 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import org.mobi.bluemoon.BootstrapApplication;
+import org.mobi.bluemoon.db.Fahrer;
+import org.mobi.bluemoon.db.Fahrzeug;
+import org.mobi.bluemoon.db.Unfall;
+import org.mobi.bluemoon.db.Unfallumstaende;
+import org.mobi.bluemoon.db.Versicherungsunternehmen;
+
+import com.activeandroid.ActiveAndroid;
+import com.activeandroid.Configuration;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
@@ -27,6 +35,10 @@ public abstract class BootstrapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         BootstrapApplication.component().inject(this);
+
+        Configuration.Builder config = new Configuration.Builder(this);
+        config.addModelClasses(Fahrer.class, Fahrzeug.class, Unfall.class, Unfallumstaende.class, Versicherungsunternehmen.class);
+        ActiveAndroid.initialize(config.create());
     }
 
     @Override

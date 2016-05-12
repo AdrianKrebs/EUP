@@ -1,7 +1,5 @@
 package org.mobi.bluemoon.db;
 
-import android.graphics.AvoidXfermode;
-
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -20,7 +18,7 @@ public class Fahrzeug extends Model{
     @Column
     private String zulassungLand;
     @Column
-    private Verischerungsunternehmen verischerungsunternehmen;
+    private Versicherungsunternehmen verischerungsunternehmen;
     @Column
     private String sichtbareschaden;
     @Column
@@ -58,11 +56,11 @@ public class Fahrzeug extends Model{
         this.zulassungLand = zulassungLand;
     }
 
-    public Verischerungsunternehmen getVerischerungsunternehmen() {
+    public Versicherungsunternehmen getVerischerungsunternehmen() {
         return verischerungsunternehmen;
     }
 
-    public void setVerischerungsunternehmen(Verischerungsunternehmen verischerungsunternehmen) {
+    public void setVerischerungsunternehmen(Versicherungsunternehmen verischerungsunternehmen) {
         this.verischerungsunternehmen = verischerungsunternehmen;
     }
 
