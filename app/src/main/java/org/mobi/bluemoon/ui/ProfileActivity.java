@@ -7,7 +7,6 @@ import android.widget.TextView;
 import com.activeandroid.query.Select;
 
 import org.mobi.bluemoon.R;
-import org.mobi.bluemoon.core.News;
 import org.mobi.bluemoon.db.Fahrer;
 
 import butterknife.Bind;

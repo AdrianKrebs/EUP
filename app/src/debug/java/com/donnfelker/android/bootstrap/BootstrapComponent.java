@@ -7,12 +7,9 @@ import org.mobi.bluemoon.core.TimerService;
 import org.mobi.bluemoon.ui.BootstrapActivity;
 import org.mobi.bluemoon.ui.BootstrapFragmentActivity;
 import org.mobi.bluemoon.ui.BootstrapTimerActivity;
-import org.mobi.bluemoon.ui.CheckInsListFragment;
 import org.mobi.bluemoon.ui.DetailsFragment;
 import org.mobi.bluemoon.ui.MainActivity;
 import org.mobi.bluemoon.ui.NavigationDrawerFragment;
-import org.mobi.bluemoon.ui.NewsActivity;
-import org.mobi.bluemoon.ui.NewsListFragment;
 import org.mobi.bluemoon.ui.OverviewFragment;
 import org.mobi.bluemoon.ui.ProfileActivity;
 import org.mobi.bluemoon.ui.UserActivity;
@@ -39,17 +36,11 @@ public interface BootstrapComponent {
 
     void inject(MainActivity target);
 
-    void inject(CheckInsListFragment target);
-
     void inject(DetailsFragment target);
 
     void inject(OverviewFragment target);
 
     void inject(NavigationDrawerFragment target);
-
-    void inject(NewsActivity target);
-
-    void inject(NewsListFragment target);
 
     void inject(UserActivity target);
 

@@ -2,15 +2,7 @@
 
 package org.mobi.bluemoon.core.core;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doReturn;
 
-import org.mobi.bluemoon.core.BootstrapService;
-import org.mobi.bluemoon.core.CheckIn;
-import org.mobi.bluemoon.core.News;
-import org.mobi.bluemoon.core.User;
-import org.mobi.bluemoon.core.UserAgentProvider;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;

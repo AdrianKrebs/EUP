@@ -19,7 +19,6 @@ import org.mobi.bluemoon.BootstrapApplication;
 import org.mobi.bluemoon.BootstrapServiceProvider;
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.authenticator.LogoutService;
-import org.mobi.bluemoon.core.CheckIn;
 import org.mobi.bluemoon.util.SingleTypeAdapter;
 
 import java.util.Collections;

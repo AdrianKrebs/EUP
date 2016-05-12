@@ -5,6 +5,6 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="shape_size">150dp</dimen>
     <dimen name="elevation_step">150dp</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">10dp</dimen>
 </resources>

@@ -40,19 +40,19 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
         final Fragment result;
         switch (position) {
             case 0:
-                result = new DetailsFragment();
-                break;
-            case 1:
                 result = new OverviewFragment();
                 break;
-            case 2:
-                result = new ElevationDragFragment();
-                break;
-            case 3:
+            case 1:
                 result = new DateFragment();
                 break;
-            case 4:
+            case 2:
                 result = new MapFragment();
+                break;
+            case 3:
+                result = new DetailsFragment();
+                break;
+            case 4:
+                result = new ElevationDragFragment();
                 break;
             case 5:
                 result = new PictureFragment();
@@ -77,15 +77,15 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(final int position) {
         switch (position) {
             case 0:
-                return resources.getString(R.string.page_details);
+                return resources.getString(R.string.home);
             case 1:
-                return resources.getString(R.string.page_home);
-            case 2:
-                return resources.getString(R.string.page_sketch);
-            case 3:
                 return resources.getString(R.string.page_date);
-            case 4:
+            case 2:
                 return resources.getString(R.string.location);
+            case 3:
+                return resources.getString(R.string.page_details);
+            case 4:
+                return resources.getString(R.string.page_sketch);
             case 5:
                 return "Bilder";
             case 6:

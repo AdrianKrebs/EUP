@@ -97,7 +97,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAulUy-EhCZSBfzuK_GFUnkUB3AO-b-3wA" />
 
-        <activity android:name=".ui.NewsActivity" />
         <activity android:name=".ui.ProfileActivity" />
         <activity
             android:name=".ui.UserActivity"

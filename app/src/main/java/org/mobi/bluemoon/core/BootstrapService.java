@@ -33,24 +33,13 @@ public class BootstrapService {
         return getRestAdapter().create(UserService.class);
     }
 
-    private NewsService getNewsService() {
-        return getRestAdapter().create(NewsService.class);
-    }
 
-    private CheckInService getCheckInService() {
-        return getRestAdapter().create(CheckInService.class);
-    }
+
 
     private RestAdapter getRestAdapter() {
         return restAdapter;
     }
 
-    /**
-     * Get all bootstrap News that exists on Parse.com
-     */
-    public List<News> getNews() {
-        return new ArrayList<>();
-    }
 
     /**
      * Get all bootstrap Users that exist on Parse.com
@@ -59,12 +48,6 @@ public class BootstrapService {
         return new ArrayList<>();
     }
 
-    /**
-     * Get all bootstrap Checkins that exists on Parse.com
-     */
-    public List<CheckIn> getCheckIns() {
-       return getCheckInService().getCheckIns().getResults();
-    }
 
     public User authenticate(String email, String password) {
         return getUserService().authenticate(email, password);
