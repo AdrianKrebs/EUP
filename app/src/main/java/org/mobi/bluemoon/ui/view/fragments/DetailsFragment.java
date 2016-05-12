@@ -49,7 +49,7 @@ public class DetailsFragment extends Fragment {
                                     // continue with delete
                                 }
                             })
-                            .setNegativeButton("bereit alarmiert", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("bereits alarmiert", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // do nothing
                                 }
