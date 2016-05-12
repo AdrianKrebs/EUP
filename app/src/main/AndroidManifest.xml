@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.mobi.bluemoon">
 
-    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18" />
+       <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -20,6 +20,16 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/Theme.Bootstrap.Dark">
+
+        <meta-data android:name="AA_DB_NAME" android:value="Bluemoon.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="org.mobi.bluemoon.db.Fahrzeug,
+            org.mobi.bluemoon.db.Unfall,
+            org.mobi.bluemoon.db.Unfallumstaende,
+            org.mobi.bluemoon.db.Versicherungsunternehmen,
+            org.mobi.bluemoon.db.Fahrer" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

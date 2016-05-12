@@ -5,6 +5,8 @@ package org.mobi.bluemoon;
 import android.app.Application;
 import android.content.Context;
 
+import com.activeandroid.ActiveAndroid;
+
 
 /**
  * bluemoon application
@@ -24,6 +26,7 @@ public abstract class BootstrapApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ActiveAndroid.initialize(this);
 
         init();
 
