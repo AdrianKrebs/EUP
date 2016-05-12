@@ -35,10 +35,14 @@ public class OverviewFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         BootstrapApplication.component().inject(this);
-      /*  if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
+
+        Bitmap homeIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.follow);
+        Bitmap userIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.note);
+        Bitmap walletIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.wallet);
+
+        gridArray.add(new Item(homeIcon,"Profil"));
+        gridArray.add(new Item(userIcon,"Protokoll"));
+        gridArray.add(new Item(walletIcon, "Digital Wallet"));
     }
 
     @Override
@@ -48,13 +52,6 @@ public class OverviewFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.overview, container, false);
-        Bitmap homeIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.follow);
-        Bitmap userIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.note);
-        Bitmap walletIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.wallet);
-
-        gridArray.add(new Item(homeIcon,"Profil"));
-        gridArray.add(new Item(userIcon,"Protokoll"));
-        gridArray.add(new Item(walletIcon, "Digital Wallet"));
 
         gridView = (GridView) view.findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(view.getContext(), R.layout.grid_item, gridArray);
@@ -65,7 +62,7 @@ public class OverviewFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
-                Toaster.showLong(getActivity(), "test onClickListener");
+                //Toaster.showLong(getActivity(), "test onClickListener");
                 // DO something
                 if (position == 0) {
                     // open ProfileActivity

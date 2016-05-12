@@ -32,7 +32,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 11;
+        return 8;
     }
 
     @Override
@@ -40,36 +40,27 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
         final Fragment result;
         switch (position) {
             case 0:
-                result = new NewsListFragment();
-                break;
-            case 1:
-                result = new UserListFragment();
-                break;
-            case 2:
-                result = new CheckInsListFragment();
-                break;
-            case 3:
                 result = new DetailsFragment();
                 break;
-            case 4:
+            case 1:
                 result = new OverviewFragment();
                 break;
-            case 5:
+            case 2:
                 result = new ElevationDragFragment();
                 break;
-            case 6:
+            case 3:
                 result = new DateFragment();
                 break;
-            case 7:
+            case 4:
                 result = new MapFragment();
                 break;
-            case 8:
+            case 5:
                 result = new PictureFragment();
                 break;
-            case 9:
+            case 6:
                 result = new DrawingFragment();
                 break;
-            case 10:
+            case 7:
                 result = new SignatureFragment();
                 break;
             default:
@@ -86,26 +77,20 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(final int position) {
         switch (position) {
             case 0:
-                return resources.getString(R.string.page_news);
-            case 1:
-                return resources.getString(R.string.page_users);
-            case 2:
-                return resources.getString(R.string.page_checkins);
-            case 3:
                 return resources.getString(R.string.page_details);
-            case 4:
+            case 1:
                 return resources.getString(R.string.page_home);
-            case 5:
+            case 2:
                 return resources.getString(R.string.page_sketch);
-            case 6:
+            case 3:
                 return resources.getString(R.string.page_date);
-            case 7:
+            case 4:
                 return resources.getString(R.string.location);
-            case 8:
+            case 5:
                 return "Bilder";
-            case 9:
+            case 6:
                 return resources.getString(R.string.page_drawing);
-            case 10:
+            case 7:
                 return resources.getString(R.string.page_signature);
 
             default:

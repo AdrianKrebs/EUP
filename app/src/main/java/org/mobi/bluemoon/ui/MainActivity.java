@@ -26,6 +26,8 @@ import org.mobi.bluemoon.core.BootstrapService;
 import org.mobi.bluemoon.events.NavItemSelectedEvent;
 import org.mobi.bluemoon.util.SafeAsyncTask;
 import org.mobi.bluemoon.util.UIUtils;
+
+import com.activeandroid.ActiveAndroid;
 import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
@@ -54,6 +56,7 @@ public class MainActivity extends BootstrapActivity {
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+      //  ActiveAndroid.initialize(this);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
