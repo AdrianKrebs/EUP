@@ -39,10 +39,45 @@ android:layout_height="match_parent"
 
 </LinearLayout>
 
-<me.panavtec.drawableview.DrawableView
-    android:id="@+id/paintView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/buttons_container"
+        android:id="@+id/signature_pad_container">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="8dp"
+            android:layout_above="@+id/signature_pad_description"
+            android:id="@+id/frameLayout" />
+
+        <TextView
+            android:id="@+id/signature_pad_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="218dp"
+            android:text="@string/agreement"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:layout_above="@+id/frameLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="56dp" />
+
+
+        <me.panavtec.drawableview.DrawableView
+            android:id="@+id/paintView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
+
+
 
 </LinearLayout>
