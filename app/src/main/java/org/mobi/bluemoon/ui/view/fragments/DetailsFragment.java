@@ -15,18 +15,13 @@ import org.mobi.bluemoon.R;
 
 public class DetailsFragment extends Fragment {
 
-
+    protected CheckBox repeatChkBx;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BootstrapApplication.component().inject(this);
-      /*  if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
-
     }
 
     @Override
@@ -34,6 +29,9 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.verletzungen, container, false);
+
+        //TODO Verletzungen-DB
+        repeatChkBx = ( CheckBox ) view.findViewById( R.id.checkBox );
 
         CheckBox repeatChkBx = ( CheckBox ) view.findViewById( R.id.checkBox );
         repeatChkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()

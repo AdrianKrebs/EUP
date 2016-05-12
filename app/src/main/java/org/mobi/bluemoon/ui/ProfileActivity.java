@@ -1,9 +1,13 @@
 package org.mobi.bluemoon.ui;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -28,6 +32,11 @@ import butterknife.Bind;
 
 public class ProfileActivity extends BootstrapActivity {
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Bind(R.id.name)
     protected EditText name;
@@ -47,6 +56,9 @@ public class ProfileActivity extends BootstrapActivity {
     protected EditText geburtsdatum;
 
     Fahrer fahrerA;
+
+
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -82,14 +94,10 @@ public class ProfileActivity extends BootstrapActivity {
         for (String fldName : fldNames) {
             System.out.println( fldName + ": " + fields.getField( fldName ) );
         }
-        File pdfFile = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS), "pdfdemo");
-        if (!pdfFile.exists()) {
-            pdfFile.mkdir();
-            Log.i("Success", "Pdf Directory created");
-        }
+        verifyStoragePermissions(this);
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "test.pdf");
         try {
-            OutputStream output = new FileOutputStream(pdfFile);
+            OutputStream output = new FileOutputStream(file);
 
             PdfStamper stamper = new PdfStamper(reader, output);
             AcroFields acroFields = stamper.getAcroFields();
@@ -103,7 +111,7 @@ public class ProfileActivity extends BootstrapActivity {
             acroFields.setField("Zeit",String.valueOf(new Date().getTime()));
             stamper.setFormFlattening(true);
             stamper.close();
-            emailNote(pdfFile);
+            emailNote(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -115,9 +123,23 @@ public class ProfileActivity extends BootstrapActivity {
 
     }
 
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
     private void viewPdf(){
         Intent intent = new Intent(Intent.ACTION_VIEW);
-       // intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");
+        // intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }

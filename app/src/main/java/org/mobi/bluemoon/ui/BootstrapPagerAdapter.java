@@ -14,6 +14,8 @@ import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.ui.view.fragments.DateFragment;
 import org.mobi.bluemoon.ui.view.fragments.DetailsFragment;
 import org.mobi.bluemoon.ui.view.fragments.DrawingFragment;
+import org.mobi.bluemoon.ui.view.fragments.FahrzeugFragment;
+import org.mobi.bluemoon.ui.view.fragments.FinishFragment;
 import org.mobi.bluemoon.ui.view.fragments.MapFragment;
 import org.mobi.bluemoon.ui.view.fragments.SignatureFragment;
 
@@ -37,7 +39,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 9;
+        return 10;
     }
 
     @Override
@@ -57,19 +59,25 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
                 result = new DetailsFragment();
                 break;
             case 4:
-                result = new ElevationDragFragment();
+                result = new FahrzeugFragment();
                 break;
             case 5:
-                result = new PictureFragment();
+                result = new ElevationDragFragment();
                 break;
             case 6:
-                result = new DrawingFragment();
+                result = new PictureFragment();
                 break;
             case 7:
-                result = new SignatureFragment();
+                result = new DrawingFragment();
                 break;
             case 8:
                 result = new ZeugenFragment();
+                break;
+            case 9:
+                result = new SignatureFragment();
+                break;
+            case 10:
+                result = new FinishFragment();
                 break;
             default:
                 result = null;
@@ -93,15 +101,20 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             case 3:
                 return resources.getString(R.string.page_details);
             case 4:
-                return resources.getString(R.string.page_sketch);
+                return "Fahrzeuge";
             case 5:
-                return "Bilder";
+                return resources.getString(R.string.page_sketch);
             case 6:
-                return resources.getString(R.string.page_drawing);
+                return "Bilder";
             case 7:
-                return resources.getString(R.string.page_signature);
+                return resources.getString(R.string.page_drawing);
             case 8:
                 return "Zeugen";
+            case 9:
+                return resources.getString(R.string.page_signature);
+
+            case 10:
+                return "Abschluss";
 
             default:
                 return null;
