@@ -1,6 +1,10 @@
 package org.mobi.bluemoon.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.activeandroid.query.Select;
@@ -78,11 +82,14 @@ public class ProfileActivity extends BootstrapActivity {
         for (String fldName : fldNames) {
             System.out.println( fldName + ": " + fields.getField( fldName ) );
         }
-
-        File myFile = new File(getResources()+"test.pdf");
-
+        File pdfFile = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS), "pdfdemo");
+        if (!pdfFile.exists()) {
+            pdfFile.mkdir();
+            Log.i("Success", "Pdf Directory created");
+        }
         try {
-            OutputStream output = new FileOutputStream(myFile);
+            OutputStream output = new FileOutputStream(pdfFile);
 
             PdfStamper stamper = new PdfStamper(reader, output);
             AcroFields acroFields = stamper.getAcroFields();
@@ -96,6 +103,7 @@ public class ProfileActivity extends BootstrapActivity {
             acroFields.setField("Zeit",String.valueOf(new Date().getTime()));
             stamper.setFormFlattening(true);
             stamper.close();
+            emailNote(pdfFile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -107,6 +115,25 @@ public class ProfileActivity extends BootstrapActivity {
 
     }
 
+    private void viewPdf(){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+       // intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
+
+
+    private void emailNote(File pdfFile)
+    {
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_SUBJECT,"Unfall_Protocol");
+        email.putExtra(Intent.EXTRA_TEXT, "Unfall_Protocol");
+        Uri uri = Uri.parse(pdfFile.getAbsolutePath());
+        email.putExtra(Intent.EXTRA_STREAM, uri);
+        email.putExtra(Intent.EXTRA_EMAIL,new String[] { "naresharjun@gmail.com" });
+        email.setType("message/rfc822");
+        startActivity(email);
+    }
     @Override
     protected void onPause() {
         super.onPause();
