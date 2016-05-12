@@ -17,7 +17,7 @@
             android:id="@+id/daten_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Versicherter"
+            android:text="Personal Information"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/table_text_selector"
             android:background="#56d3f6"
@@ -91,7 +91,7 @@
             android:id="@+id/daten_fahrzeug_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fahrzeug"
+            android:text="Fuehrerschein"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/table_text_selector"
             android:background="#56d3f6"
@@ -99,15 +99,15 @@
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:id="@+id/marke_text"
+            android:id="@+id/nummer_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Marke, Typ"
+            android:text="Nummer"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_selector" />
 
         <EditText
-            android:id="@+id/marke"
+            android:id="@+id/nummer"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -120,15 +120,15 @@
             android:textColorHint="@color/input_login_hint" />
 
         <TextView
-            android:id="@+id/kennzeichen_text"
+            android:id="@+id/klasse_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Amtliches Kennzeichen"
+            android:text="Klasse"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_selector" />
 
         <EditText
-            android:id="@+id/kennzeichen"
+            android:id="@+id/klasse"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -141,71 +141,20 @@
             android:textColorHint="@color/input_login_hint" />
 
         <TextView
-            android:id="@+id/land_text"
+            android:id="@+id/geburtsdatum_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Land der Zulassung"
+            android:text="Geburtsdatum"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/table_text_selector" />
 
         <EditText
-            android:id="@+id/land"
+            android:id="@+id/geburtsdatum"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
-
-        <TextView
-            android:id="@+id/versicherung_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Versicherungsunternehmen"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/table_text_selector"
-            android:background="#56d3f6"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:id="@+id/versicherungsname_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_selector" />
-
-        <EditText
-            android:id="@+id/versicherungsname"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
-        <TextView
-            android:id="@+id/versicherungsnummer_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Versicherungsnummer"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/table_text_selector" />
-
-        <EditText
-            android:id="@+id/versicherungsnummer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:inputType="textPersonName"
+            android:inputType="date"
             android:padding="10dp"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"

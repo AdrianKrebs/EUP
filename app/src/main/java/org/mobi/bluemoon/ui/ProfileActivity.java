@@ -19,8 +19,16 @@ public class ProfileActivity extends BootstrapActivity {
     protected EditText adresse;
     @Bind(R.id.email)
     protected EditText email;
-    @Bind(R.id.marke)
-    protected EditText marke;
+
+
+    @Bind(R.id.nummer)
+    protected EditText nummer;
+
+    @Bind(R.id.klasse)
+    protected EditText klasse;
+
+    @Bind(R.id.geburtsdatum)
+    protected EditText geburtsdatum;
 
     Fahrer fahrerA;
 
@@ -40,7 +48,9 @@ public class ProfileActivity extends BootstrapActivity {
         name.setHint("Hans Muster");
         adresse.setHint("Musterweg 12");
         email.setHint("maxmuster@email.com");
-        marke.setHint("Opel");
+        nummer.setHint("0087632482384");
+        klasse.setHint("B");
+        geburtsdatum.setHint("11.11.1975");
     }
 
     @Override
@@ -61,7 +71,10 @@ public class ProfileActivity extends BootstrapActivity {
             name.setText(fahrerA.getName());
             adresse.setText(fahrerA.getStrasse());
             email.setText(fahrerA.getEmail());
-            marke.setText(fahrerA.getKlasse());
+
+            nummer.setText(fahrerA.getFuehrerscheinnummer());
+            geburtsdatum.setText(fahrerA.getGeburtsdatum());
+            klasse.setText(fahrerA.getKlasse());
         }
     }
 
@@ -75,8 +88,11 @@ public class ProfileActivity extends BootstrapActivity {
         fahrerA = new Fahrer();
         fahrerA.setName(name.getText().toString());
         fahrerA.setStrasse(adresse.getText().toString());
-        fahrerA.setKlasse(marke.getText().toString());
         fahrerA.setEmail(email.getText().toString());
+
+        fahrerA.setKlasse(klasse.getText().toString());
+        fahrerA.setGeburtsdatum(geburtsdatum.getText().toString());
+        fahrerA.setFuehrerscheinnummer(nummer.getText().toString());
         fahrerA.save();
     }
 
