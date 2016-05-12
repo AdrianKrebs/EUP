@@ -39,27 +39,16 @@ import butterknife.Bind;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class BootstrapTimerActivity extends BootstrapFragmentActivity implements View.OnClickListener {
+public class BootstrapTimerActivity extends BootstrapFragmentActivity  {
 
     @Inject
     Bus eventBus;
 
-    @Bind(R.id.chronometer)
-    protected TextView chronometer;
-    @Bind(R.id.start)
-    protected Button start;
-    @Bind(R.id.stop)
-    protected Button stop;
-    @Bind(R.id.pause)
-    protected Button pause;
-    @Bind(R.id.resume)
-    protected Button resume;
-    @Bind(R.id.sendGetRequest)
-    protected Button submit;
-    @Bind(R.id.textView)
-    protected TextView textView;
     @Bind(R.id.spinner_condition)
     protected Spinner testSpinner;
+
+    @Bind(R.id.spinner_condition2)
+    protected Spinner testSpinner2;
 
 
     @Override
@@ -68,18 +57,13 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
 
         BootstrapApplication.component().inject(this);
 
-        setContentView(R.layout.bootstrap_timer);
+        setContentView(R.layout.settings);
 
         setTitle(R.string.settings);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        start.setOnClickListener(this);
-        stop.setOnClickListener(this);
-        pause.setOnClickListener(this);
-        resume.setOnClickListener(this);
-        submit.setOnClickListener(this);
 
 
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -90,31 +74,12 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
 
 // Apply the adapter to the spinner
         testSpinner.setAdapter(adapter_condition);
+        testSpinner2.setAdapter(adapter_condition);
     }
 
-    @Override
-    public void onClick(final View v) {
-        switch (v.getId()) {
-            case R.id.start:
-                startTimer();
-                break;
-            case R.id.stop:
-                produceStopEvent();
-                break;
-            case R.id.pause:
-                producePauseEvent();
-                break;
-            case R.id.resume:
-                produceResumeEvent();
-                break;
-            case R.id.sendGetRequest:
-                sendHttpRequest();
-                break;
-        }
-    }
 
     private void sendHttpRequest() {
-
+/*
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://www.google.com";
@@ -134,7 +99,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
             }
         });
         // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+        queue.add(stringRequest);*/
 
 
     }
@@ -176,7 +141,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
             final Intent i = new Intent(this, TimerService.class);
             startService(i);
 
-            setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
+          //  setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
         }
     }
 
@@ -204,9 +169,9 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
     @Subscribe
     public void onTimerPausedEvent(final TimerPausedEvent event) {
         if (event.isTimerIsPaused()) {
-            setButtonVisibility(GONE, VISIBLE, VISIBLE, GONE);
+           // setButtonVisibility(GONE, VISIBLE, VISIBLE, GONE);
         } else if (isTimerServiceRunning()) {
-            setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
+           // setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
         }
     }
 
@@ -227,7 +192,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
      */
     @Subscribe
     public void onPauseEvent(final PauseTimerEvent event) {
-        setButtonVisibility(GONE, VISIBLE, VISIBLE, GONE);
+       // setButtonVisibility(GONE, VISIBLE, VISIBLE, GONE);
     }
 
     /**
@@ -237,7 +202,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
      */
     @Subscribe
     public void onResumeEvent(final ResumeTimerEvent event) {
-        setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
+       // setButtonVisibility(GONE, VISIBLE, GONE, VISIBLE);
     }
 
     /**
@@ -247,7 +212,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
      */
     @Subscribe
     public void onStopEvent(final StopTimerEvent event) {
-        setButtonVisibility(VISIBLE, GONE, GONE, GONE);
+        //setButtonVisibility(VISIBLE, GONE, GONE, GONE);
         setFormattedTime(0); // Since its stopped, zero out the timer.
     }
 
@@ -266,13 +231,6 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
         return false;
     }
 
-    private void setButtonVisibility(final int start, final int stop,
-                                     final int resume, final int pause) {
-        this.start.setVisibility(start);
-        this.stop.setVisibility(stop);
-        this.resume.setVisibility(resume);
-        this.pause.setVisibility(pause);
-    }
 
     /**
      * Sets the formatted time
@@ -281,7 +239,7 @@ public class BootstrapTimerActivity extends BootstrapFragmentActivity implements
      */
     private void setFormattedTime(long millis) {
         final String formattedTime = TimeUtil.formatTime(millis);
-        chronometer.setText(formattedTime);
+        //chronometer.setText(formattedTime);
     }
 
 
