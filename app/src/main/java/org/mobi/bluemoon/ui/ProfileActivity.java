@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.activeandroid.query.Select;
+
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.core.News;
+import org.mobi.bluemoon.db.Fahrer;
 
 import butterknife.Bind;
 
@@ -36,7 +39,37 @@ public class ProfileActivity extends BootstrapActivity {
         adresse.setHint("Musterweg 12");
         email.setHint("maxmuster@email.com");
         marke.setHint("Opel");
-
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Fahrer fahrerA = new Fahrer();
+        fahrerA.setName(name.getText().toString());
+        fahrerA.setStrasse(adresse.getText().toString());
+        fahrerA.setKlasse(marke.getText().toString());
+        fahrerA.setEmail(email.getText().toString());
+        fahrerA.save();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Fahrer fahrerA = new Select().from(Fahrer.class).orderBy("RANDOM()").executeSingle();
+        name.setText(fahrerA.getName());
+        adresse.setText(fahrerA.getStrasse());
+        email.setText(fahrerA.getEmail());
+        marke.setText(fahrerA.getKlasse());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Fahrer fahrerA = new Fahrer();
+        fahrerA.setName(name.getText().toString());
+        fahrerA.setStrasse(adresse.getText().toString());
+        fahrerA.setKlasse(marke.getText().toString());
+        fahrerA.setEmail(email.getText().toString());
+        fahrerA.save();
+    }
 }
