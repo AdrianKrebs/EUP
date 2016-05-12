@@ -1,4 +1,4 @@
-package org.mobi.bluemoon.ui;
+package org.mobi.bluemoon.ui.view.fragments;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

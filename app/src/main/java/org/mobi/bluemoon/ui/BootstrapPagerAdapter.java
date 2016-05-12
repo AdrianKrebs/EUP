@@ -11,6 +11,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 
 import org.mobi.bluemoon.R;
+import org.mobi.bluemoon.ui.view.fragments.DateFragment;
+import org.mobi.bluemoon.ui.view.fragments.DetailsFragment;
+import org.mobi.bluemoon.ui.view.fragments.DrawingFragment;
+import org.mobi.bluemoon.ui.view.fragments.MapFragment;
+import org.mobi.bluemoon.ui.view.fragments.SignatureFragment;
 
 /**
  * Pager adapter

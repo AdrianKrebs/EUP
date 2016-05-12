@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.activeandroid.query.Select;
+import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.PdfReader;
 
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.db.Fahrer;
+
+import java.io.IOException;
+import java.util.Set;
 
 import butterknife.Bind;
 
@@ -51,6 +56,21 @@ public class ProfileActivity extends BootstrapActivity {
         nummer.setHint("0087632482384");
         klasse.setHint("B");
         geburtsdatum.setHint("11.11.1975");
+
+        PdfReader reader = null;
+        try {
+            reader = new PdfReader(getResources().openRawResource(R.raw.formular));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AcroFields fields = reader.getAcroFields();
+
+        Set<String> fldNames = fields.getFields().keySet();
+
+        for (String fldName : fldNames) {
+            System.out.println( fldName + ": " + fields.getField( fldName ) );
+        }
     }
 
     @Override

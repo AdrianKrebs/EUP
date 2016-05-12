@@ -1,13 +1,11 @@
 package org.mobi.bluemoon;
 
-import android.provider.ContactsContract;
-
 import org.mobi.bluemoon.authenticator.BootstrapAuthenticatorActivity;
 import org.mobi.bluemoon.core.TimerService;
 import org.mobi.bluemoon.ui.BootstrapActivity;
 import org.mobi.bluemoon.ui.BootstrapFragmentActivity;
 import org.mobi.bluemoon.ui.BootstrapTimerActivity;
-import org.mobi.bluemoon.ui.DetailsFragment;
+import org.mobi.bluemoon.ui.view.fragments.DetailsFragment;
 import org.mobi.bluemoon.ui.MainActivity;
 import org.mobi.bluemoon.ui.NavigationDrawerFragment;
 import org.mobi.bluemoon.ui.OverviewFragment;
