@@ -1,33 +1,17 @@
 package org.mobi.bluemoon.ui;
 
-import android.accounts.OperationCanceledException;
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.Loader;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-
-import com.viewpagerindicator.TitlePageIndicator;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import org.mobi.bluemoon.BootstrapApplication;
-import org.mobi.bluemoon.BootstrapServiceProvider;
 import org.mobi.bluemoon.R;
-import org.mobi.bluemoon.authenticator.LogoutService;
-import org.mobi.bluemoon.util.SingleTypeAdapter;
-
-import java.util.Collections;
-import java.util.List;
-
-import javax.inject.Inject;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class DetailsFragment extends Fragment {
 
@@ -42,13 +26,43 @@ public class DetailsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }*/
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.personal_information, container, false);
+        View view = inflater.inflate(R.layout.verletzungen, container, false);
+
+        CheckBox repeatChkBx = ( CheckBox ) view.findViewById( R.id.checkBox );
+        repeatChkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Verletzte")
+                            .setMessage("Sobald Verletzte involviert sind muss zwingend die Polizei alarmiert werden.")
+                            .setPositiveButton("Polizei alarmieren", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setNegativeButton("bereit alarmiert", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
+            }
+        });
+
 
 
         return view;

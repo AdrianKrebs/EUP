@@ -48,7 +48,7 @@ public class OverviewFragment extends Fragment {
         gridArray.add(new Item(walletIcon, "Digital Wallet"));
         gridArray.add(new Item(garage, "Garage suchen"));
         gridArray.add(new Item(call, "Notruf"));
-        gridArray.add(new Item(feed, "Connect"));
+        gridArray.add(new Item(feed, "Daten\naustausch"));
     }
 
     @Override

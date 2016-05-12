@@ -39,7 +39,7 @@ import timber.log.Timber;
  */
 public class UserAgentProvider implements Provider<String> {
 
-    private static final String APP_NAME = "bluemoon";
+    private static final String APP_NAME = "Unfallprotokoll";
 
     protected ApplicationInfo appInfo;
     protected PackageInfo info;
