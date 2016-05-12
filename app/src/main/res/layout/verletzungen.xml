@@ -62,7 +62,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#eae2e2">
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -112,7 +113,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#eae2e2">
 
             <TextView
                 android:id="@+id/textView6"
@@ -158,7 +160,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#eae2e2">
 
             <TextView
                 android:id="@+id/textView7"
