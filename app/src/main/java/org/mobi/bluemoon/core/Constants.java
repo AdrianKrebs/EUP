@@ -19,7 +19,7 @@ public final class Constants {
         /**
          * Account name
          */
-        public static final String BOOTSTRAP_ACCOUNT_NAME = "bluemoon";
+        public static final String BOOTSTRAP_ACCOUNT_NAME = "Unfallprotokoll";
 
         /**
          * Provider id
