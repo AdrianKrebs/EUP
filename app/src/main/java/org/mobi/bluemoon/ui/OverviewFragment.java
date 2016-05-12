@@ -39,10 +39,12 @@ public class OverviewFragment extends Fragment {
         Bitmap homeIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.follow);
         Bitmap userIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.note);
         Bitmap walletIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.wallet);
+        Bitmap garage = BitmapFactory.decodeResource(this.getResources(), R.drawable.compass);
 
         gridArray.add(new Item(homeIcon,"Profil"));
         gridArray.add(new Item(userIcon,"Protokoll"));
         gridArray.add(new Item(walletIcon, "Digital Wallet"));
+        gridArray.add(new Item(garage, "Garage suchen"));
     }
 
     @Override

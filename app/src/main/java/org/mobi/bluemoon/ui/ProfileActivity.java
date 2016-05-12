@@ -17,10 +17,14 @@ import static org.mobi.bluemoon.core.Constants.Extra.NEWS_ITEM;
 public class ProfileActivity extends BootstrapActivity {
 
 
-    @Bind(R.id.name) protected EditText name;
-    @Bind(R.id.adresse) protected EditText adresse;
-    @Bind(R.id.email) protected  EditText email;
-    @Bind(R.id.marke) protected EditText marke;
+    @Bind(R.id.name)
+    protected EditText name;
+    @Bind(R.id.adresse)
+    protected EditText adresse;
+    @Bind(R.id.email)
+    protected EditText email;
+    @Bind(R.id.marke)
+    protected EditText marke;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -56,10 +60,13 @@ public class ProfileActivity extends BootstrapActivity {
     protected void onResume() {
         super.onResume();
         Fahrer fahrerA = new Select().from(Fahrer.class).orderBy("RANDOM()").executeSingle();
-        name.setText(fahrerA.getName());
-        adresse.setText(fahrerA.getStrasse());
-        email.setText(fahrerA.getEmail());
-        marke.setText(fahrerA.getKlasse());
+        if (fahrerA != null) {
+            name.setText(fahrerA.getName());
+            adresse.setText(fahrerA.getStrasse());
+            email.setText(fahrerA.getEmail());
+            marke.setText(fahrerA.getKlasse());
+        }
+
     }
 
     @Override
