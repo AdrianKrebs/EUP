@@ -4,13 +4,20 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.activeandroid.query.Select;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.db.Fahrer;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Date;
 import java.util.Set;
 
 import butterknife.Bind;
@@ -71,6 +78,33 @@ public class ProfileActivity extends BootstrapActivity {
         for (String fldName : fldNames) {
             System.out.println( fldName + ": " + fields.getField( fldName ) );
         }
+
+        File myFile = new File(getResources()+"test.pdf");
+
+        try {
+            OutputStream output = new FileOutputStream(myFile);
+
+            PdfStamper stamper = new PdfStamper(reader, output);
+            AcroFields acroFields = stamper.getAcroFields();
+            loadFahrer();
+            if(fahrerA != null) {
+                acroFields.setField("NAME", fahrerA.getName());
+                acroFields.setField("address", fahrerA.getStrasse());
+                acroFields.setField("Ort", fahrerA.getLand());
+            }
+            acroFields.setField("Datum des Unfalls", new Date().toString());
+            acroFields.setField("Zeit",String.valueOf(new Date().getTime()));
+            stamper.setFormFlattening(true);
+            stamper.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
