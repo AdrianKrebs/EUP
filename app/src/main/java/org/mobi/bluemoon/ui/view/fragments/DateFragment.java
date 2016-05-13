@@ -140,10 +140,10 @@ public class DateFragment extends Fragment {
     }
 
     private void saveUnfall() {
-       /* unfall = new Unfall();
+        unfall = new Unfall();
         unfall.setDatum(dateText.getText().toString());
         unfall.setZeit(timeText.getText().toString());
-        unfall.save();*/
+        unfall.save();
     }
 
 

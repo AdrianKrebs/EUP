@@ -113,11 +113,11 @@ public class DetailsFragment extends Fragment {
     }
 
     private void saveUnfall() {
-       /* unfall = new Unfall();
+        unfall = new Unfall();
         unfall.setVerletzte(verletzeJa.isChecked());
         unfall.setSachschaden_dritte_fahrzeug(sachschadenJa.isChecked());
         unfall.setGegenstaende(gegenstaendeJa.isChecked());
-        unfall.save();*/
+        unfall.save();
     }
 
 
