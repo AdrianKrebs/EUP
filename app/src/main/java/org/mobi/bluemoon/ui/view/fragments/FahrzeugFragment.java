@@ -62,8 +62,8 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void loadFahrzeug() {
-      /*  fahrzeugA = Fahrzeug.load(Fahrzeug.class,1);
-        fahrzeugB = Fahrzeug.load(Fahrzeug.class,2);*/
+        fahrzeugA = Fahrzeug.load(Fahrzeug.class,1);
+        fahrzeugB = Fahrzeug.load(Fahrzeug.class,2);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void saveFahrzeug() {
-        /*fahrzeugA = new Fahrzeug();
+        fahrzeugA = new Fahrzeug();
         fahrzeugA.setId(Long.valueOf(1));
         fahrzeugA.setZulassungLand(land_fahrzeug_a.getText().toString());
         fahrzeugA.setKennzeichen(kenn_fahrzeug_a.getText().toString());
@@ -99,7 +99,7 @@ public class FahrzeugFragment extends Fragment {
         fahrzeugB.setZulassungLand(land_fahrzeug_b.getText().toString());
         fahrzeugB.setKennzeichen(kenn_fahrzeug_b.getText().toString());
         fahrzeugB.setMarke(marke_fahrzeug_b.getText().toString());
-        fahrzeugB.save();*/
+        fahrzeugB.save();
     }
 
 

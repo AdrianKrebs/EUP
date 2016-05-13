@@ -29,12 +29,6 @@ public class Unfall extends Model{
     private Boolean gegenstaende;
     @Column
     private String zeugen;
-    @Column
-    private Fahrzeug fahrzeugA;
-    @Column
-    private Fahrzeug fahrzeugB;
-    @Column
-    private Unfallumstaende unfallumstaende;
 
     public String getDatum() {
         return datum;
@@ -108,27 +102,4 @@ public class Unfall extends Model{
         this.zeugen = zeugen;
     }
 
-    public Fahrzeug getFahrzeugA() {
-        return fahrzeugA;
-    }
-
-    public void setFahrzeugA(Fahrzeug fahrzeugA) {
-        this.fahrzeugA = fahrzeugA;
-    }
-
-    public Fahrzeug getFahrzeugB() {
-        return fahrzeugB;
-    }
-
-    public void setFahrzeugB(Fahrzeug fahrzeugB) {
-        this.fahrzeugB = fahrzeugB;
-    }
-
-    public Unfallumstaende getUnfallumstaende() {
-        return unfallumstaende;
-    }
-
-    public void setUnfallumstaende(Unfallumstaende unfallumstaende) {
-        this.unfallumstaende = unfallumstaende;
-    }
 }

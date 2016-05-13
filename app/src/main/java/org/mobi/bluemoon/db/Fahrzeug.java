@@ -21,8 +21,6 @@ public class Fahrzeug extends Model{
     @Column
     private String zulassungLand;
     @Column
-    private Versicherungsunternehmen verischerungsunternehmen;
-    @Column
     private String sichtbareschaden;
     @Column
     private String eigeneBemerkungen;
@@ -57,14 +55,6 @@ public class Fahrzeug extends Model{
 
     public void setZulassungLand(String zulassungLand) {
         this.zulassungLand = zulassungLand;
-    }
-
-    public Versicherungsunternehmen getVerischerungsunternehmen() {
-        return verischerungsunternehmen;
-    }
-
-    public void setVerischerungsunternehmen(Versicherungsunternehmen verischerungsunternehmen) {
-        this.verischerungsunternehmen = verischerungsunternehmen;
     }
 
     public String getSichtbareschaden() {
