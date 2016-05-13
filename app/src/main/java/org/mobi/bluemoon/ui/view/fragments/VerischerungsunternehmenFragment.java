@@ -62,8 +62,8 @@ public class VerischerungsunternehmenFragment extends Fragment {
     }
 
     private void loadVersicherung() {
-        verischerungA = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 1").executeSingle();
-        verischerungB = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 2").executeSingle();
+        verischerungA = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 1").orderBy("id DESC").executeSingle();
+        verischerungB = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 2").orderBy("id DESC").executeSingle();
     }
 
     @Override
