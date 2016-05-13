@@ -12,8 +12,6 @@ public class Fahrzeug extends Model{
     @Column
     private int fahrzeugId;
     @Column
-    private Fahrer fahrer;
-    @Column
     private String marke;
     @Column
     private String kennzeichen;
@@ -23,14 +21,6 @@ public class Fahrzeug extends Model{
     private String sichtbareschaden;
     @Column
     private String eigeneBemerkungen;
-
-    public Fahrer getFahrer() {
-        return fahrer;
-    }
-
-    public void setFahrer(Fahrer fahrer) {
-        this.fahrer = fahrer;
-    }
 
     public String getMarke() {
         return marke;
