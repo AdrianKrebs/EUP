@@ -94,8 +94,8 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadUnfall();
-        if (unfall != null) {
+       // loadUnfall();
+        /*if (unfall != null) {
             verletzeJa.setChecked(unfall.getVerletzte());
             verletzteNein.setChecked(!unfall.getVerletzte());
 
@@ -103,7 +103,7 @@ public class DetailsFragment extends Fragment {
             sachschadenNein.setChecked(!unfall.getSachschaden_dritte_fahrzeug());
             gegenstaendeJa.setChecked(unfall.getGegenstaende());
             gegenstaendeNein.setChecked(!unfall.getGegenstaende());
-        }
+        }*/
     }
 
     @Override

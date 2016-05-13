@@ -59,6 +59,8 @@ public class MainActivity extends BootstrapActivity {
       //  ActiveAndroid.initialize(this);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        //this.deleteDatabase("Bluemoon.db");
+
         super.onCreate(savedInstanceState);
         BootstrapApplication.component().inject(this);
 

@@ -62,8 +62,8 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void loadFahrzeug() {
-        fahrzeugA = new Select().from(Fahrzeug.class).where("fahrzeudId == 1").executeSingle();
-        fahrzeugB = new Select().from(Fahrzeug.class).where("fahrzeudId == 2").executeSingle();
+        fahrzeugA = new Select().from(Fahrzeug.class).where("fahrzeugId == 1").orderBy("id DESC").executeSingle();
+        fahrzeugB = new Select().from(Fahrzeug.class).where("fahrzeugId == 2").orderBy("id DESC").executeSingle();
     }
 
     @Override
