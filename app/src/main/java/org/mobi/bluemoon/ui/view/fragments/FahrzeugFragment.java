@@ -14,6 +14,7 @@ import org.mobi.bluemoon.db.Fahrer;
 import org.mobi.bluemoon.db.Fahrzeug;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import me.panavtec.drawableview.DrawableView;
 import me.panavtec.drawableview.DrawableViewConfig;
 
@@ -50,6 +51,7 @@ public class FahrzeugFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fahrzeug, container, false);
+        ButterKnife.bind(this, view);
        return view;
     }
 
@@ -60,8 +62,8 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void loadFahrzeug() {
-        fahrzeugA = Fahrzeug.load(Fahrzeug.class,1);
-        fahrzeugB = Fahrzeug.load(Fahrzeug.class,2);
+      /*  fahrzeugA = Fahrzeug.load(Fahrzeug.class,1);
+        fahrzeugB = Fahrzeug.load(Fahrzeug.class,2);*/
     }
 
     @Override
@@ -87,7 +89,7 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void saveFahrzeug() {
-        fahrzeugA = new Fahrzeug();
+        /*fahrzeugA = new Fahrzeug();
         fahrzeugA.setId(Long.valueOf(1));
         fahrzeugA.setZulassungLand(land_fahrzeug_a.getText().toString());
         fahrzeugA.setKennzeichen(kenn_fahrzeug_a.getText().toString());
@@ -97,7 +99,7 @@ public class FahrzeugFragment extends Fragment {
         fahrzeugB.setZulassungLand(land_fahrzeug_b.getText().toString());
         fahrzeugB.setKennzeichen(kenn_fahrzeug_b.getText().toString());
         fahrzeugB.setMarke(marke_fahrzeug_b.getText().toString());
-        fahrzeugB.save();
+        fahrzeugB.save();*/
     }
 
 

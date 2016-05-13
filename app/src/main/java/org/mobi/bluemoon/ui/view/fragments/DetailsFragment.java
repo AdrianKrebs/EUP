@@ -18,6 +18,7 @@ import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.db.Unfall;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DetailsFragment extends Fragment {
 
@@ -49,6 +50,7 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.verletzungen, container, false);
+        ButterKnife.bind(this, view);
 
         verletzeJa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
@@ -111,11 +113,11 @@ public class DetailsFragment extends Fragment {
     }
 
     private void saveUnfall() {
-        unfall = new Unfall();
+       /* unfall = new Unfall();
         unfall.setVerletzte(verletzeJa.isChecked());
         unfall.setSachschaden_dritte_fahrzeug(sachschadenJa.isChecked());
         unfall.setGegenstaende(gegenstaendeJa.isChecked());
-        unfall.save();
+        unfall.save();*/
     }
 
 

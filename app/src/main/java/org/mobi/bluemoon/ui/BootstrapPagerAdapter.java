@@ -39,7 +39,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 10;
+        return 11;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             case 8:
                 return "Zeugen";
             case 9:
-                return resources.getString(R.string.page_signature);
+                return "Unterschriften";
 
             case 10:
                 return "Abschluss";

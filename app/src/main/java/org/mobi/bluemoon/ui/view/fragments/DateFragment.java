@@ -8,6 +8,7 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -26,10 +27,9 @@ import butterknife.Bind;
 
 public class DateFragment extends Fragment {
 
-    @Bind(R.id.accidentDate)
+
     protected EditText dateText;
-    @Bind(R.id.accidentTime)
-    private EditText timeText;
+    protected EditText timeText;
 
     Unfall unfall;
 
@@ -43,6 +43,9 @@ public class DateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = View.inflate(getActivity(), R.layout.date_page, null);
+
+        dateText = (EditText) view.findViewById(R.id.accidentDate);
+        timeText = (EditText) view.findViewById(R.id.accidentTime);
 
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.requestFocus();
@@ -137,10 +140,10 @@ public class DateFragment extends Fragment {
     }
 
     private void saveUnfall() {
-        unfall = new Unfall();
+       /* unfall = new Unfall();
         unfall.setDatum(dateText.getText().toString());
         unfall.setZeit(timeText.getText().toString());
-        unfall.save();
+        unfall.save();*/
     }
 
 

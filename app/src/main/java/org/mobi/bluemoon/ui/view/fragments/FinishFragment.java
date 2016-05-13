@@ -35,6 +35,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Set;
 
+import butterknife.ButterKnife;
 import me.panavtec.drawableview.DrawableView;
 import me.panavtec.drawableview.DrawableViewConfig;
 
@@ -62,6 +63,7 @@ public class FinishFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.finish, container, false);
+        ButterKnife.bind(this, view);
 
         Button sendButton = (Button) view.findViewById(R.id.sendEmail);
         verifyStoragePermissions(this);

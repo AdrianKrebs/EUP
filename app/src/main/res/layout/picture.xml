@@ -7,9 +7,10 @@
     <Button
         android:id="@+id/btnCapture"
         style="@style/BootstrapButton"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Kamera starten"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:padding="5dp" />
 
