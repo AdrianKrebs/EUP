@@ -95,6 +95,7 @@ public class FahrzeugFragment extends Fragment {
         fahrzeugA.setKennzeichen(kenn_fahrzeug_a.getText().toString());
         fahrzeugA.setMarke(marke_fahrzeug_a.getText().toString());
         fahrzeugA.save();
+        fahrzeugB = new Fahrzeug();
         fahrzeugB.setId(Long.valueOf(2));
         fahrzeugB.setZulassungLand(land_fahrzeug_b.getText().toString());
         fahrzeugB.setKennzeichen(kenn_fahrzeug_b.getText().toString());

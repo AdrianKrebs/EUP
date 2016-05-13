@@ -59,7 +59,6 @@ public class MainActivity extends BootstrapActivity {
       //  ActiveAndroid.initialize(this);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-
         super.onCreate(savedInstanceState);
         BootstrapApplication.component().inject(this);
 
