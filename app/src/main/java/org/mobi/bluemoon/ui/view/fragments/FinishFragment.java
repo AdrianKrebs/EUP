@@ -141,7 +141,7 @@ public class FinishFragment extends Fragment {
         email.putExtra(Intent.EXTRA_SUBJECT, "Unfall_Protocol");
         email.putExtra(Intent.EXTRA_TEXT, "Guten Tag \nVor kurzem ereignete sich ein Auto-Unfall zwischen folgenden Parteien: \n" +
                 "- Arjunan Naresh \n" +
-                "- Adrian Krebs \n" +
+                "- Krebs Adrian \n" +
                 "Im Anhang befindet sich das ausgefüllte Unfallprotokoll");
         Uri uri = Uri.parse(pdfFile.getAbsolutePath());
         email.putExtra(Intent.EXTRA_STREAM, uri);
