@@ -32,12 +32,6 @@ import butterknife.Bind;
 
 public class ProfileActivity extends BootstrapActivity {
 
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
-
     @Bind(R.id.name)
     protected EditText name;
     @Bind(R.id.adresse)
@@ -56,8 +50,6 @@ public class ProfileActivity extends BootstrapActivity {
     protected EditText geburtsdatum;
 
     Fahrer fahrerA;
-
-
 
 
     @Override
@@ -80,82 +72,10 @@ public class ProfileActivity extends BootstrapActivity {
         klasse.setHint("B");
         geburtsdatum.setHint("11.11.1975");
 
-        PdfReader reader = null;
-        try {
-            reader = new PdfReader(getResources().openRawResource(R.raw.formular));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        AcroFields fields = reader.getAcroFields();
-
-        Set<String> fldNames = fields.getFields().keySet();
-
-        for (String fldName : fldNames) {
-            System.out.println( fldName + ": " + fields.getField( fldName ) );
-        }
-        verifyStoragePermissions(this);
-        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "test.pdf");
-        try {
-            OutputStream output = new FileOutputStream(file);
-
-            PdfStamper stamper = new PdfStamper(reader, output);
-            AcroFields acroFields = stamper.getAcroFields();
-            loadFahrer();
-            if(fahrerA != null) {
-                acroFields.setField("NAME", fahrerA.getName());
-                acroFields.setField("address", fahrerA.getStrasse());
-                acroFields.setField("Ort", fahrerA.getLand());
-            }
-            acroFields.setField("Datum des Unfalls", new Date().toString());
-            acroFields.setField("Zeit",String.valueOf(new Date().getTime()));
-            stamper.setFormFlattening(true);
-            stamper.close();
-            emailNote(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
     }
 
-    public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        }
-    }
-
-    private void viewPdf(){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        // intent.setDataAndType(Uri.fromFile(myFile), "application/pdf");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
-    }
-
-
-    private void emailNote(File pdfFile)
-    {
-        Intent email = new Intent(Intent.ACTION_SEND);
-        email.putExtra(Intent.EXTRA_SUBJECT,"Unfall_Protocol");
-        email.putExtra(Intent.EXTRA_TEXT, "Unfall_Protocol");
-        Uri uri = Uri.parse(pdfFile.getAbsolutePath());
-        email.putExtra(Intent.EXTRA_STREAM, uri);
-        email.putExtra(Intent.EXTRA_EMAIL,new String[] { "naresharjun@gmail.com" });
-        email.setType("message/rfc822");
-        startActivity(email);
-    }
     @Override
     protected void onPause() {
         super.onPause();
