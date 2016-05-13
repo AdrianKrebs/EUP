@@ -12,6 +12,8 @@ import java.util.Date;
 @Table(name = "Unfall")
 public class Unfall extends Model{
     @Column
+    private int unfallId;
+    @Column
     private String datum;
     @Column
     private String zeit;
@@ -102,4 +104,11 @@ public class Unfall extends Model{
         this.zeugen = zeugen;
     }
 
+    public int getUnfallId() {
+        return unfallId;
+    }
+
+    public void setUnfallId(int unfallId) {
+        this.unfallId = unfallId;
+    }
 }

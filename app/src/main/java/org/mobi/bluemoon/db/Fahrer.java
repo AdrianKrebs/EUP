@@ -10,6 +10,8 @@ import com.activeandroid.annotation.Table;
 @Table(name = "Fahrer")
 public class Fahrer extends Model {
     @Column
+    private int fahrerId;
+    @Column
     private String name;
     @Column
     private String vorname;
@@ -138,5 +140,13 @@ public class Fahrer extends Model {
 
     public void setFuehrerscheingultigkeit(String fuehrerscheingultigkeit) {
         this.fuehrerscheingultigkeit = fuehrerscheingultigkeit;
+    }
+
+    public int getFahrerId() {
+        return fahrerId;
+    }
+
+    public void setFahrerId(int fahrerId) {
+        this.fahrerId = fahrerId;
     }
 }

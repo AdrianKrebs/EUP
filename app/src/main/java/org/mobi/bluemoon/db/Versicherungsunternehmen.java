@@ -7,10 +7,11 @@ import com.activeandroid.annotation.Table;
 /**
  * Created by Client on 12.05.2016.
  */
-@Table(name = "Versicherungsunternehmen",id = "_id")
+@Table(name = "Versicherungsunternehmen")
 public class Versicherungsunternehmen extends Model{
-    @Column(name = "id")
-    private Long id;
+
+    @Column
+    private int versicherungsunternehmenId;
     @Column
     private String name;
     @Column
@@ -82,7 +83,12 @@ public class Versicherungsunternehmen extends Model{
         this.email = email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public int getVersicherungsunternehmenId() {
+        return versicherungsunternehmenId;
     }
+
+    public void setVersicherungsunternehmenId(int versicherungsunternehmenId) {
+        this.versicherungsunternehmenId = versicherungsunternehmenId;
+    }
+
 }

@@ -7,11 +7,10 @@ import com.activeandroid.annotation.Table;
 /**
  * Created by Client on 12.05.2016.
  */
-@Table(name = "Fahrzeug",id = "_id")
+@Table(name = "Fahrzeug")
 public class Fahrzeug extends Model{
-
-    @Column(name = "id")
-    private Long id;
+    @Column
+    private int fahrzeugId;
     @Column
     private Fahrer fahrer;
     @Column
@@ -73,7 +72,11 @@ public class Fahrzeug extends Model{
         this.eigeneBemerkungen = eigeneBemerkungen;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public int getFahrzeugId() {
+        return fahrzeugId;
+    }
+
+    public void setFahrzeugId(int fahrzeugId) {
+        this.fahrzeugId = fahrzeugId;
     }
 }

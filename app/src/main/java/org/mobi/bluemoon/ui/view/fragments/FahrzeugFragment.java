@@ -52,7 +52,7 @@ public class FahrzeugFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fahrzeug, container, false);
         ButterKnife.bind(this, view);
-       return view;
+        return view;
     }
 
     @Override
@@ -62,8 +62,8 @@ public class FahrzeugFragment extends Fragment {
     }
 
     private void loadFahrzeug() {
-        fahrzeugA = Fahrzeug.load(Fahrzeug.class,1);
-        fahrzeugB = Fahrzeug.load(Fahrzeug.class,2);
+        fahrzeugA = new Select().from(Fahrzeug.class).where("fahrzeudId == 1").executeSingle();
+        fahrzeugB = new Select().from(Fahrzeug.class).where("fahrzeudId == 2").executeSingle();
     }
 
     @Override
@@ -75,7 +75,7 @@ public class FahrzeugFragment extends Fragment {
             kenn_fahrzeug_a.setText(fahrzeugA.getKennzeichen());
             land_fahrzeug_a.setText(fahrzeugA.getZulassungLand());
         }
-        if(fahrzeugB != null) {
+        if (fahrzeugB != null) {
             marke_fahrzeug_b.setText(fahrzeugB.getMarke());
             kenn_fahrzeug_b.setText(fahrzeugB.getKennzeichen());
             land_fahrzeug_b.setText(fahrzeugB.getZulassungLand());
@@ -90,12 +90,12 @@ public class FahrzeugFragment extends Fragment {
 
     private void saveFahrzeug() {
         fahrzeugA = new Fahrzeug();
-        fahrzeugA.setId(Long.valueOf(1));
+        fahrzeugA.setFahrzeugId(1);
         fahrzeugA.setZulassungLand(land_fahrzeug_a.getText().toString());
         fahrzeugA.setKennzeichen(kenn_fahrzeug_a.getText().toString());
         fahrzeugA.setMarke(marke_fahrzeug_a.getText().toString());
         fahrzeugA.save();
-        fahrzeugB.setId(Long.valueOf(2));
+        fahrzeugB.setFahrzeugId(2);
         fahrzeugB.setZulassungLand(land_fahrzeug_b.getText().toString());
         fahrzeugB.setKennzeichen(kenn_fahrzeug_b.getText().toString());
         fahrzeugB.setMarke(marke_fahrzeug_b.getText().toString());

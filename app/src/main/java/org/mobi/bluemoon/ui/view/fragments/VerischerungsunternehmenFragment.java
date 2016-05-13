@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.activeandroid.query.Select;
+
 import org.mobi.bluemoon.R;
+import org.mobi.bluemoon.db.Fahrzeug;
 import org.mobi.bluemoon.db.Versicherungsunternehmen;
 
 import butterknife.Bind;
@@ -59,8 +62,8 @@ public class VerischerungsunternehmenFragment extends Fragment {
     }
 
     private void loadVersicherung() {
-        verischerungA = Versicherungsunternehmen.load(Versicherungsunternehmen.class,1);
-        verischerungB = Versicherungsunternehmen.load(Versicherungsunternehmen.class,2);
+        verischerungA = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 1").executeSingle();
+        verischerungB = new Select().from(Versicherungsunternehmen.class).where("versicherungsunternehmenId == 2").executeSingle();
     }
 
     @Override
@@ -87,13 +90,13 @@ public class VerischerungsunternehmenFragment extends Fragment {
 
     private void saveVerischerungsUnternehmen() {
         verischerungA = new Versicherungsunternehmen();
-        verischerungA.setId(Long.valueOf(1));
+        verischerungA.setVersicherungsunternehmenId(1);
         verischerungA.setName(vu_nameA.getText().toString());
         verischerungA.setVertragsnummer(vertragsnummer_a.getText().toString());
         verischerungA.setEmail(telefon_oder_emailA.getText().toString());
         verischerungA.save();
         verischerungB = new Versicherungsunternehmen();
-        verischerungB.setId(Long.valueOf(2));
+        verischerungB.setVersicherungsunternehmenId(2);
         verischerungB.setName(vu_nameB.getText().toString());
         verischerungB.setVertragsnummer(vertragsnummerB.getText().toString());
         verischerungB.setEmail(telefon_Oder_EmailB.getText().toString());

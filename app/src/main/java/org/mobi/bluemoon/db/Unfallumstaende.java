@@ -9,6 +9,9 @@ import com.activeandroid.annotation.Table;
  */
 @Table(name = "Unfallumstaende")
 public class Unfallumstaende extends Model {
+
+    @Column
+    private int unfallumstaendeId;
     @Column
     private Boolean parkte;
     @Column
@@ -194,5 +197,13 @@ public class Unfallumstaende extends Model {
 
     public void setMissAchtungVorfahrtzeichen(Boolean missAchtungVorfahrtzeichen) {
         this.missAchtungVorfahrtzeichen = missAchtungVorfahrtzeichen;
+    }
+
+    public int getUnfallumstaendeId() {
+        return unfallumstaendeId;
+    }
+
+    public void setUnfallumstaendeId(int unfallumstaendeId) {
+        this.unfallumstaendeId = unfallumstaendeId;
     }
 }
