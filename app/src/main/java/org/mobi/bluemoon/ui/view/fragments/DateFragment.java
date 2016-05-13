@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +12,30 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.activeandroid.query.Select;
+
 import org.mobi.bluemoon.R;
+import org.mobi.bluemoon.db.Fahrer;
+import org.mobi.bluemoon.db.Unfall;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import butterknife.Bind;
+
 public class DateFragment extends Fragment {
 
-    private EditText dateText;
+    @Bind(R.id.accidentDate)
+    protected EditText dateText;
+    @Bind(R.id.accidentTime)
     private EditText timeText;
+
+    Unfall unfall;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -36,11 +44,9 @@ public class DateFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = View.inflate(getActivity(), R.layout.date_page, null);
 
-        dateText = (EditText) view.findViewById(R.id.accidentDate);
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.requestFocus();
 
-        timeText = (EditText) view.findViewById(R.id.accidentTime);
         timeText.setInputType(InputType.TYPE_NULL);
         timeText.requestFocus();
 
@@ -49,7 +55,6 @@ public class DateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new DatePickerDialog(getActivity(), date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -60,7 +65,6 @@ public class DateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -88,7 +92,6 @@ public class DateFragment extends Fragment {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
-            // TODO Auto-generated method stub
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -106,6 +109,40 @@ public class DateFragment extends Fragment {
 
         dateText.setText(sdf.format(myCalendar.getTime()));
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        saveUnfall();
+    }
+
+    private void loadUnfall() {
+        unfall = new Select().from(Unfall.class).orderBy("id DESC").executeSingle();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUnfall();
+        if (unfall != null) {
+            dateText.setText(unfall.getDatum());
+            timeText.setText(unfall.getZeit());
+                   }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        saveUnfall();
+    }
+
+    private void saveUnfall() {
+        unfall = new Unfall();
+        unfall.setDatum(dateText.getText().toString());
+        unfall.setZeit(timeText.getText().toString());
+        unfall.save();
+    }
+
 
 }
 

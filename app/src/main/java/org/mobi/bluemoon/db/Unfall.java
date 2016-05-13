@@ -12,7 +12,9 @@ import java.util.Date;
 @Table(name = "Unfall")
 public class Unfall extends Model{
     @Column
-    private Date datum;
+    private String datum;
+    @Column
+    private String zeit;
     @Column
     private String ort;
     @Column
@@ -34,12 +36,20 @@ public class Unfall extends Model{
     @Column
     private Unfallumstaende unfallumstaende;
 
-    public Date getDatum() {
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
+    }
+
+    public String getZeit() {
+        return zeit;
+    }
+
+    public void setZeit(String zeit) {
+        this.zeit = zeit;
     }
 
     public String getOrt() {

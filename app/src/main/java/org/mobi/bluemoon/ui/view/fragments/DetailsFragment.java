@@ -9,14 +9,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+
+import com.activeandroid.query.Select;
 
 import org.mobi.bluemoon.BootstrapApplication;
 import org.mobi.bluemoon.R;
+import org.mobi.bluemoon.db.Unfall;
+
+import butterknife.Bind;
 
 public class DetailsFragment extends Fragment {
 
-    protected CheckBox repeatChkBx;
+    @Bind(R.id.verletzteJa)
+    protected CheckBox verletzeJa;
+    @Bind(R.id.verletzteNein)
+    protected CheckBox verletzteNein;
 
+    @Bind(R.id.sachschadenJa)
+    protected CheckBox sachschadenJa;
+    @Bind(R.id.sachschadenNein)
+    protected CheckBox sachschadenNein;
+
+    @Bind(R.id.gegenstaendeJa)
+    protected CheckBox gegenstaendeJa;
+    @Bind(R.id.gegenstaendeNein)
+    protected CheckBox gegenstaendeNein;
+
+    Unfall unfall;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,11 +50,7 @@ public class DetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.verletzungen, container, false);
 
-        //TODO Verletzungen-DB
-        repeatChkBx = ( CheckBox ) view.findViewById( R.id.checkBox );
-
-        CheckBox repeatChkBx = ( CheckBox ) view.findViewById( R.id.checkBox );
-        repeatChkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        verletzeJa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -60,11 +76,48 @@ public class DetailsFragment extends Fragment {
 
             }
         });
-
-
-
         return view;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        saveUnfall();
+    }
+
+    private void loadUnfall() {
+        unfall = new Select().from(Unfall.class).orderBy("id DESC").executeSingle();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUnfall();
+        if (unfall != null) {
+            verletzeJa.setChecked(unfall.getVerletzte());
+            verletzteNein.setChecked(!unfall.getVerletzte());
+
+            sachschadenJa.setChecked(unfall.getSachschaden_dritte_fahrzeug());
+            sachschadenNein.setChecked(!unfall.getSachschaden_dritte_fahrzeug());
+            gegenstaendeJa.setChecked(unfall.getGegenstaende());
+            gegenstaendeNein.setChecked(!unfall.getGegenstaende());
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        saveUnfall();
+    }
+
+    private void saveUnfall() {
+        unfall = new Unfall();
+        unfall.setVerletzte(verletzeJa.isChecked());
+        unfall.setSachschaden_dritte_fahrzeug(sachschadenJa.isChecked());
+        unfall.setGegenstaende(gegenstaendeJa.isChecked());
+        unfall.save();
+    }
+
 
 
 }
