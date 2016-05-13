@@ -139,10 +139,13 @@ public class FinishFragment extends Fragment {
     private void emailNote(File pdfFile) {
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_SUBJECT, "Unfall_Protocol");
-        email.putExtra(Intent.EXTRA_TEXT, "Unfall_Protocol");
+        email.putExtra(Intent.EXTRA_TEXT, "Guten Tag \nVor kurzem ereignete sich ein Auto-Unfall zwischen folgenden Parteien: \n" +
+                "- Arjunan Naresh \n" +
+                "- Adrian Krebs \n" +
+                "Im Anhang befindet sich das ausgefüllte Unfallprotokoll");
         Uri uri = Uri.parse(pdfFile.getAbsolutePath());
         email.putExtra(Intent.EXTRA_STREAM, uri);
-        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"naresharjun@gmail.com"});
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"mein_berater@mobi.ch","dein_berater@axa.ch","krebs-adrian@bluewin.ch","naresharjun@gmail.com"});
         email.setType("message/rfc822");
         startActivity(email);
     }
