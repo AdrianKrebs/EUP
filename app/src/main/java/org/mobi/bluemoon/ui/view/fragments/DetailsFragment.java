@@ -88,7 +88,7 @@ public class DetailsFragment extends Fragment {
     }
 
     private void loadUnfall() {
-        unfall = new Select().from(Unfall.class).orderBy("id DESC").executeSingle();
+        unfall = new Select().from(Unfall.class).where("unfallId == 1").orderBy("id DESC").executeSingle();
     }
 
     @Override
@@ -113,7 +113,10 @@ public class DetailsFragment extends Fragment {
     }
 
     private void saveUnfall() {
-        unfall = new Unfall();
+        loadUnfall();
+        if(unfall == null) {
+            unfall = new Unfall();
+        }
         unfall.setVerletzte(verletzeJa.isChecked());
         unfall.setSachschaden_dritte_fahrzeug(sachschadenJa.isChecked());
         unfall.setGegenstaende(gegenstaendeJa.isChecked());

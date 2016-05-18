@@ -75,7 +75,7 @@ public class DateFragment extends Fragment {
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        timeText.setText( selectedHour + ":" + selectedMinute);
+                        timeText.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -104,7 +104,6 @@ public class DateFragment extends Fragment {
     };
 
 
-
     private void updateLabel() {
 
         String myFormat = "MM/dd/yy"; //In which you need put here
@@ -120,7 +119,7 @@ public class DateFragment extends Fragment {
     }
 
     private void loadUnfall() {
-        unfall = new Select().from(Unfall.class).orderBy("id DESC").executeSingle();
+        unfall = new Select().from(Unfall.class).where("unfallId == 1").orderBy("id DESC").executeSingle();
     }
 
     @Override
@@ -130,7 +129,7 @@ public class DateFragment extends Fragment {
         if (unfall != null) {
             dateText.setText(unfall.getDatum());
             timeText.setText(unfall.getZeit());
-                   }
+        }
     }
 
     @Override
@@ -140,7 +139,10 @@ public class DateFragment extends Fragment {
     }
 
     private void saveUnfall() {
-        unfall = new Unfall();
+        if(unfall == null) {
+            unfall = new Unfall();
+        }
+        unfall.setUnfallId(1);
         unfall.setDatum(dateText.getText().toString());
         unfall.setZeit(timeText.getText().toString());
         unfall.save();
