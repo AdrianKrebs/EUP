@@ -19,12 +19,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.activeandroid.query.Select;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 
 import org.mobi.bluemoon.R;
+import org.mobi.bluemoon.db.Fahrer;
+import org.mobi.bluemoon.db.Fahrzeug;
+import org.mobi.bluemoon.db.Unfall;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -97,6 +101,19 @@ public class FinishFragment extends Fragment {
 
                     acroFields.setField("Datum des Unfalls", new Date().toString());
                     acroFields.setField("Zeit", String.valueOf(new Date().getTime()));
+
+                    Fahrer fahrerA = new Select().from(Fahrer.class).orderBy("id DESC").executeSingle();
+                    Unfall unfall = new Select().from(Unfall.class).orderBy("id DESC").executeSingle();
+                    Fahrzeug fahrzeugA = new Select().from(Fahrzeug.class).where("fahrzeugId == 1").orderBy("id DESC").executeSingle();
+
+                    acroFields.setField("NAME", fahrerA.getName().toString());
+                    acroFields.setField("Anschrift", fahrerA.getStrasse());
+                    acroFields.setField("Telefon oder E-Mail 1", fahrerA.getEmail().toString());
+                    acroFields.setField("Marke Typ KFZ 1", fahrzeugA.getMarke());
+                    acroFields.setField("Amtliches Kennzeichen KFZ 1", fahrzeugA.getKennzeichen());
+                    acroFields.setField("Land der Zulassung KFZ 1", fahrzeugA.getZulassungLand());
+                    acroFields.setField("ja", "On");
+
                     stamper.setFormFlattening(true);
                     stamper.close();
                     emailNote(file);
