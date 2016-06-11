@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import org.mobi.bluemoon.R;
 import org.mobi.bluemoon.ui.view.fragments.DateFragment;
 import org.mobi.bluemoon.ui.view.fragments.DetailsFragment;
-import org.mobi.bluemoon.ui.view.fragments.DrawingFragment;
 import org.mobi.bluemoon.ui.view.fragments.FahrzeugFragment;
 import org.mobi.bluemoon.ui.view.fragments.FinishFragment;
 import org.mobi.bluemoon.ui.view.fragments.MapFragment;
@@ -41,7 +40,7 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 13;
+        return 12;
     }
 
     @Override
@@ -67,24 +66,21 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
                 result = new VerischerungsunternehmenFragment();
                 break;
             case 6:
-                result = new ElevationDragFragment();
+                result = new SketchFragment();
                 break;
             case 7:
                 result = new PictureFragment();
                 break;
             case 8:
-                result = new DrawingFragment();
-                break;
-            case 9:
                 result = new ZeugenFragment();
                 break;
-            case 10:
+            case 9:
                 result = new UmstaendeFragment();
                 break;
-            case 11:
+            case 10:
                 result = new SignatureFragment();
                 break;
-            case 12:
+            case 11:
                 result = new FinishFragment();
                 break;
             default:
@@ -117,14 +113,12 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
             case 7:
                 return "Bilder";
             case 8:
-                return resources.getString(R.string.page_drawing);
-            case 9:
                 return "Zeugen";
-            case 10:
+            case 9:
                 return "Umstände";
-            case 11:
+            case 10:
                 return "Unterschriften";
-            case 12:
+            case 11:
                 return "Abschluss";
 
             default:

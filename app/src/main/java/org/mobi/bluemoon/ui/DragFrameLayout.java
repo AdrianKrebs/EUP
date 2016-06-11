@@ -95,7 +95,6 @@ public class DragFrameLayout extends FrameLayout {
                 super.onViewCaptured(capturedChild, activePointerId);
                 if (mDragFrameLayoutController != null) {
 
-                    //TODO add selection code here capturedChild.background or sth
                     mDragFrameLayoutController.onDragDrop(true);
                 }
             }
@@ -104,6 +103,7 @@ public class DragFrameLayout extends FrameLayout {
             public void onViewReleased(View releasedChild, float xvel, float yvel) {
                 super.onViewReleased(releasedChild, xvel, yvel);
                 if (mDragFrameLayoutController != null) {
+                    // TODO save imagepositions here
                     mDragFrameLayoutController.onDragDrop(false);
                 }
             }

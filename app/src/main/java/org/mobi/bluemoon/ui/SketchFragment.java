@@ -45,7 +45,7 @@ import java.io.ByteArrayOutputStream;
 
 import butterknife.Bind;
 
-public class ElevationDragFragment extends Fragment {
+public class SketchFragment extends Fragment {
 
 
     private static final int REQUEST_ID = 12345;
@@ -116,24 +116,46 @@ public class ElevationDragFragment extends Fragment {
     }
 
 
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // get positions back here
+        //getIntent().getExtras()
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // save positions here
+       // getIntent().putExtras()
+
+    }
+
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ID) {
             if (resultCode == Activity.RESULT_OK) {
                 AppCompatImageView imageView = new AppCompatImageView(getContext());
-              //  int positon = Integer.parseInt(data.getExtras().get("data").toString());
-            //    if (positon == 1) {
-
+                int  position = Integer.parseInt(data.getExtras().get("position").toString());
+                if (position == 0) {
                     imageView.setImageResource(R.drawable.vorfahrt);
+                } else if (position == 1) {
+                    imageView.setImageResource(R.drawable.verbot);
+                } else if (position == 2) {
+                    imageView.setImageResource(R.drawable.pedestrian);
+                } else {
+                    return;
+                }
 
-                    imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT));
-
-//                LayoutInflater vi = (LayoutInflater) getContext().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                View root = vi.inflate(R.layout.sketch, null);
+                imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
                 dragLayout.addView(imageView);
-                imageView.setZ(10f);
                 dragLayout.addDragView(imageView);
                 imageView.setVisibility(View.VISIBLE);
 

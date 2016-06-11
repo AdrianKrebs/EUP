@@ -49,7 +49,7 @@ public class SymbolsActivity extends BootstrapActivity {
 
 
         gridArray.add(new Item(vorfahrtIcon,"Vorfahrt"));
-        gridArray.add(new Item(verbotIcon,"Vorfahrt"));
+        gridArray.add(new Item(verbotIcon,"Fahrverbot"));
         gridArray.add(new Item(pedestrian,"Fussgänger"));
 
 
@@ -66,11 +66,10 @@ public class SymbolsActivity extends BootstrapActivity {
                 // DO something
 
                 // should pass the pic to the previous activity
-                Intent data = new Intent();
-                String text = String.valueOf(position);
-//---set the data to pass back---
-                data.setData(Uri.parse(text));
-                setResult(RESULT_OK, data);
+                getIntent().putExtra("position",id);
+
+
+                setResult(RESULT_OK, getIntent());
 //---close the activity---
                 finish();
 
