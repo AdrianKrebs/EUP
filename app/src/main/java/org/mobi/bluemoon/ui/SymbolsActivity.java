@@ -46,11 +46,15 @@ public class SymbolsActivity extends BootstrapActivity {
         Bitmap vorfahrtIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.vorfahrt);
         Bitmap verbotIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.verbot);
         Bitmap pedestrian = BitmapFactory.decodeResource(this.getResources(), R.drawable.pedestrian);
+        Bitmap velo = BitmapFactory.decodeResource(this.getResources(), R.drawable.velo);
+        Bitmap bike = BitmapFactory.decodeResource(this.getResources(), R.drawable.bike);
 
 
         gridArray.add(new Item(vorfahrtIcon,"Vorfahrt"));
         gridArray.add(new Item(verbotIcon,"Fahrverbot"));
         gridArray.add(new Item(pedestrian,"Fussgänger"));
+        gridArray.add(new Item(velo,"Fahrrad"));
+        gridArray.add(new Item(bike,"Motorrad"));
 
 
 

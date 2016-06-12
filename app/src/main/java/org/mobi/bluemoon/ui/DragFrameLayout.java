@@ -18,11 +18,14 @@ package org.mobi.bluemoon.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
@@ -71,6 +74,13 @@ public class DragFrameLayout extends FrameLayout {
             @Override
             public boolean tryCaptureView(View child, int pointerId) {
 
+                mDragFrameLayoutController = new DragFrameLayoutController() {
+                    @Override
+                    public void onDragDrop(boolean captured) {
+                        // do nothing
+                    }
+                };
+
                 selectedView = child;
                 return mDragViews.contains(child);
             }
@@ -105,6 +115,11 @@ public class DragFrameLayout extends FrameLayout {
                 if (mDragFrameLayoutController != null) {
                     // TODO save imagepositions here
                     mDragFrameLayoutController.onDragDrop(false);
+                    SharedPreferences sharedPref = getContext().getSharedPreferences("positions",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putInt(releasedChild.getId()+"L", Math.round(releasedChild.getX()));
+                    editor.putInt(releasedChild.getId()+"T", Math.round(releasedChild.getY()));
+                    editor.commit();
                 }
             }
         });
@@ -134,12 +149,28 @@ public class DragFrameLayout extends FrameLayout {
         mDragViews.add(dragView);
     }
 
+
+    public View getDragViewById(int viewId) {
+
+        for (View view : mDragViews) {
+            if (view.getId() == viewId) {
+                return view;
+            }
+
+        }
+        return null;
+    }
+
     /**
      * Sets the {@link DragFrameLayoutController} that will receive the drag events.
      * @param dragFrameLayoutController a {@link DragFrameLayoutController}
      */
     public void setDragFrameController(DragFrameLayoutController dragFrameLayoutController) {
         mDragFrameLayoutController = dragFrameLayoutController;
+    }
+
+    public List<View> getAllViews() {
+        return mDragViews;
     }
 
     /**

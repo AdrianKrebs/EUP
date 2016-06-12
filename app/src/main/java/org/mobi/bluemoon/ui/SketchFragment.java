@@ -21,6 +21,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Outline;
@@ -34,10 +35,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+
+import com.google.android.gms.vision.Frame;
 
 import org.mobi.bluemoon.R;
 
@@ -52,6 +56,7 @@ public class SketchFragment extends Fragment {
     protected ImageButton rotation_button;
     ImageButton add_button;
     DragFrameLayout dragLayout;
+    View floatingShape;
 
     int numClicks = 1;
 
@@ -62,14 +67,13 @@ public class SketchFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sketch, container, false);
 
         /* Find the {@link View} to apply z-translation to. */
-        final View floatingShape = rootView.findViewById(R.id.circle);
+        floatingShape = rootView.findViewById(R.id.circle);
         final View car2 = rootView.findViewById(R.id.car2);
 
         dragLayout = ((DragFrameLayout) rootView.findViewById(R.id.main_layout));
@@ -85,16 +89,7 @@ public class SketchFragment extends Fragment {
                 numClicks++;
             }
         });
-        dragLayout.setDragFrameController(new DragFrameLayout.DragFrameLayoutController() {
 
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onDragDrop(boolean captured) {
-                floatingShape.animate()
-                        .translationZ(captured ? 50 : 0)
-                        .setDuration(100);
-            }
-        });
 
         dragLayout.addDragView(floatingShape);
         dragLayout.addDragView(car2);
@@ -116,13 +111,27 @@ public class SketchFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onResume() {
         super.onResume();
         // get positions back here
-        //getIntent().getExtras()
+
+        // TODO define String in constants gloabally
+        SharedPreferences sharedPref = getContext().getSharedPreferences("positions",Context.MODE_PRIVATE);
+
+        for (View v : dragLayout.getAllViews()) {
+            int x = sharedPref.getInt(v.getId() + "L", 0);
+            int y = sharedPref.getInt(v.getId() + "T", 0);
+
+
+            if (x > 0 && y > 0) {
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(x, y, 0, 0);
+                v.setLayoutParams(params);
+            }
+        }
+        //sharedPref.edit().clear().commit();
 
     }
 
@@ -130,8 +139,6 @@ public class SketchFragment extends Fragment {
     public void onStop() {
         super.onStop();
 
-        // save positions here
-       // getIntent().putExtras()
 
     }
 
@@ -142,22 +149,32 @@ public class SketchFragment extends Fragment {
         if (requestCode == REQUEST_ID) {
             if (resultCode == Activity.RESULT_OK) {
                 AppCompatImageView imageView = new AppCompatImageView(getContext());
-                int  position = Integer.parseInt(data.getExtras().get("position").toString());
+                int position = Integer.parseInt(data.getExtras().get("position").toString());
                 if (position == 0) {
                     imageView.setImageResource(R.drawable.vorfahrt);
                 } else if (position == 1) {
                     imageView.setImageResource(R.drawable.verbot);
                 } else if (position == 2) {
                     imageView.setImageResource(R.drawable.pedestrian);
+                }else if (position == 3) {
+                    imageView.setImageResource(R.drawable.velo);
+                }else if (position == 4) {
+                    imageView.setImageResource(R.drawable.bike);
                 } else {
                     return;
                 }
 
-                imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
+
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                imageView.setLayoutParams(params);
+                imageView.setId(View.generateViewId());
                 dragLayout.addView(imageView);
                 dragLayout.addDragView(imageView);
-                imageView.setVisibility(View.VISIBLE);
+
+                final ViewGroup.MarginLayoutParams lpt =(ViewGroup.MarginLayoutParams)imageView.getLayoutParams();
+                lpt.setMargins(300,300,0,0);
 
 
 
