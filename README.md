@@ -10,7 +10,9 @@
 * Daten zur Auswertung für Unfallstatistiken
 
 
-
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg" width="50%" height="50%">
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot2.jpg" width="50%" height="50%">
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot3.jpg" width="50%" height="50%">
 
 ## Fantastic UI libs
 * https://design.google.com/icons/#ic_assignment_ind -> icons for menu
