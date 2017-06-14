@@ -27,7 +27,7 @@
 - Kein Gekritzel
 
 ## Startscreen
-![alt text](https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg)
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg" width="50%" height="50%">
 
 ## Live Anweisungen
 
