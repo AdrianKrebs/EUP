@@ -2,17 +2,50 @@
 
 * Digitales Unfallprotokoll
 
-## Folgende Vorteile bietet die App gegenüber der Papierform
-* Sprachunabhängig -> brauche nicht ein Protokoll in jeder Sprache
-* Handy hat man immer bei sich -> Protokoll evtl nicht, Anerkennungsprozess
-* Schnelleres Aufnehmen eines Schadens (Persönliche Daten wie Adresse,Fahrzeug,Versicherung können hinterlegt werden -> Digital Wallet mit Fahrzeugpapieren?)
-* Mail an Bezugsperson bei der Versicherung (Mehrmaliges umkopieren/abtippen der gleichen Daten fällt weg)
-* Daten zur Auswertung für Unfallstatistiken
+## Problem
+- Schnell vergessen/verloren
+- Sprachbarrieren
+- Schriftbarrieren (Skizze…)
+- Mühsames ausfüllen
+- Ausfüllen -> einscannen -> verschicken -> bearbeiten
+- In der Hektik/Nervosität schnell unübersichtlich
 
 
+
+## Vorteile für Kunden
+
+- Einfache Bedienung/Übersicht (Nervosität)
+- Sprachunabhängig
+- Schnell ausgefüllt (Bereits erfasste Daten)
+- Immer dabei
+- Daten werden sofort per Mail verschickt (beide Parteien + Versicherungen)
+
+## Mehrwert für Versicherung
+
+- Schnellere Unfallmeldungen (Kontaktaufnahme)
+- Schnellere Verarbeitung
+- Weniger Abklärungen notwendig
+- Einheitliche Unfallmeldungen
+- Kein Gekritzel
+
+
+
+### Startscreen
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg" width="50%" height="50%">
-<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot2.jpg" width="50%" height="50%">
+### Live Anweisungen
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125036.png" width="50%" height="50%">
+### Umstände erfassen
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125239.png" width="50%" height="50%">
+### Schadenskizze
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125414.png" width="50%" height="50%">
+<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125406.png" width="50%" height="50%">
+### Unterschrift
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot3.jpg" width="50%" height="50%">
+
+Weitere Features:
+- Standort und Uhrzeit des Unfalls
+- Bilder der Unfallstelle
+- Zeugenerfassung
 
 ## Fantastic UI libs
 * https://design.google.com/icons/#ic_assignment_ind -> icons for menu
