@@ -26,28 +26,29 @@
 - Einheitliche Unfallmeldungen
 - Kein Gekritzel
 
+## Startscreen
+![alt text](https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg)
 
+## Live Anweisungen
 
-Startscreen
-<img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg" width="50%" height="50%">
-Live Anweisungen
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125036.png" width="50%" height="50%">
 
-Umstände erfassen
+## Umstände erfassen
+
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125239.png" width="50%" height="50%">
 
-Schadenskizze
+# Schadenskizze
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125414.png" width="50%" height="50%">
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125406.png" width="50%" height="50%">
-Unterschrift
+# Unterschrift
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot3.jpg" width="50%" height="50%">
 
-Weitere Features:
+# Weitere Features:
 - Standort und Uhrzeit des Unfalls
 - Bilder der Unfallstelle
 - Zeugenerfassung
 
-## Fantastic UI libs
+# Fantastic UI libs
 * https://design.google.com/icons/#ic_assignment_ind -> icons for menu
 * https://github.com/wasabeef/awesome-android-ui
 * https://github.com/tekinarslan/AndroidMaterialDesignToolbar
