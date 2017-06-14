@@ -28,16 +28,18 @@
 
 
 
-### Startscreen
+Startscreen
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot.jpg" width="50%" height="50%">
-### Live Anweisungen
+Live Anweisungen
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125036.png" width="50%" height="50%">
-### Umstände erfassen
+
+Umstände erfassen
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125239.png" width="50%" height="50%">
-### Schadenskizze
+
+Schadenskizze
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125414.png" width="50%" height="50%">
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/Screenshot_20170614-125406.png" width="50%" height="50%">
-### Unterschrift
+Unterschrift
 <img src="https://github.com/AdrianKrebs/elektronisches-unfallprotokoll/blob/master/screenshot3.jpg" width="50%" height="50%">
 
 Weitere Features:
