@@ -1,6 +1,4 @@
-# Notizen zu Hackathon
-
-* Digitales Unfallprotokoll
+# Digitales Unfallprotokoll
 
 ## Problem
 - Schnell vergessen/verloren
